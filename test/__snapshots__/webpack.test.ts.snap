@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`handles git metadata > expect git metadata to be available 1`] = `
+"import * as git from "virtual:build-meta/git";
+
+console.log(git);
+"
+`;
+
+exports[`handles git metadata > expect specific git properties to be importable 1`] = `
+"import { branch, sha, shortSha } from "virtual:build-meta/git";
+
+console.log({ branch, sha, shortSha });
+"
+`;
