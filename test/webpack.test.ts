@@ -62,9 +62,7 @@ describe("handles git metadata", () => {
     const { stats } = await webpack({
       entry: join(testdirPath, "git.js"),
       plugins: [
-        buildMeta({
-          modules: ["git"],
-        }),
+        buildMeta(),
       ],
     }, testdirPath);
 
@@ -84,9 +82,7 @@ describe("handles git metadata", () => {
     const { stats } = await webpack({
       entry: join(testdirPath, "git-specific.js"),
       plugins: [
-        buildMeta({
-          modules: ["git"],
-        }),
+        buildMeta(),
       ],
     }, testdirPath);
 

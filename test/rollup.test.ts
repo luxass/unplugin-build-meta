@@ -12,9 +12,7 @@ describe("handles git metadata", () => {
 
     const bundle = await rollup({
       input: join(testdirPath, "git.js"),
-      plugins: [buildMeta({
-        modules: ["git"],
-      })],
+      plugins: [buildMeta()],
     });
 
     const { output } = await bundle.generate({
@@ -44,9 +42,7 @@ describe("handles git metadata", () => {
 
     const bundle = await rollup({
       input: join(testdirPath, "git-specific.js"),
-      plugins: [buildMeta({
-        modules: ["git"],
-      })],
+      plugins: [buildMeta()],
     });
 
     const { output } = await bundle.generate({

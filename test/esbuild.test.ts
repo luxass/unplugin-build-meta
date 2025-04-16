@@ -15,9 +15,7 @@ describe("handles git metadata", () => {
       bundle: true,
       write: false,
       format: "esm",
-      plugins: [buildMeta({
-        modules: ["git"],
-      })],
+      plugins: [buildMeta()],
     });
 
     expect(result).toBeDefined();
@@ -48,9 +46,7 @@ describe("handles git metadata", () => {
       bundle: true,
       write: false,
       format: "esm",
-      plugins: [buildMeta({
-        modules: ["git"],
-      })],
+      plugins: [buildMeta()],
     });
 
     expect(result).toBeDefined();

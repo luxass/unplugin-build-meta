@@ -21,9 +21,7 @@ describe("handles git metadata", () => {
         outDir: join(testdirPath, "dist"),
         minify: false,
       },
-      plugins: [buildMeta({
-        modules: ["git"],
-      })],
+      plugins: [buildMeta()],
     });
 
     if (!Array.isArray(result)) {
@@ -68,9 +66,7 @@ describe("handles git metadata", () => {
         outDir: join(testdirPath, "dist"),
         minify: false,
       },
-      plugins: [buildMeta({
-        modules: ["git"],
-      })],
+      plugins: [buildMeta()],
     });
 
     if (!Array.isArray(result)) {

@@ -66,9 +66,7 @@ describe("handles git metadata", () => {
 
     const { stats } = await rspack({
       entry: join(testdirPath, "git.js"),
-      plugins: [buildMeta({
-        modules: ["git"],
-      })],
+      plugins: [buildMeta()],
     }, testdirPath);
 
     const output = stats.toJson({ source: true }).modules?.[0]?.source;
@@ -86,9 +84,7 @@ describe("handles git metadata", () => {
 
     const { stats } = await rspack({
       entry: join(testdirPath, "git-specific.js"),
-      plugins: [buildMeta({
-        modules: ["git"],
-      })],
+      plugins: [buildMeta()],
     }, testdirPath);
 
     const output = stats.toJson({ source: true }).modules?.[0]?.source;
