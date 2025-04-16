@@ -9,8 +9,13 @@ export interface BuildMetaModule {
 
 export interface BuildMetaOptions {
   /**
-   * Which modules to include in the build meta.
-   * By default `all` modules are included.
+   * Whether to enable the git module.
+   * @default true
    */
-  modules?: (Module | BuildMetaModule)[];
+  git?: boolean;
+
+  /**
+   * Additional custom modules to include in the build meta.
+   */
+  extraModules?: BuildMetaModule[];
 }

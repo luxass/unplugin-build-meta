@@ -13,20 +13,16 @@ const PREFIX_WITH_NULL = `\0${PREFIX}`;
  * A unplugin factory, used by Unplugin to create a new plugin instance.
  */
 export const unpluginFactory: UnpluginFactory<BuildMetaOptions | undefined> = (options = {}) => {
-  const { modules: _modules = [] } = options;
+  const { git = true, extraModules = [] } = options;
 
   const modules: BuildMetaModule[] = [];
 
-  for (const module of _modules) {
-    if (typeof module === "object" && "name" in module) {
-      modules.push(module);
-      continue;
-    }
-
-    if (module === "git") {
-      modules.push(gitModule);
-    }
+  if (git) {
+    modules.push(gitModule);
   }
+
+  // Add any extra custom modules
+  modules.push(...extraModules);
 
   return {
     name: PLUGIN_NAME,

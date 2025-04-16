@@ -190,9 +190,20 @@ export default defineConfig({
 
 ```ts
 buildMeta({
-  modules: ["git"] // Configure which modules to include
+  // Whether to enable the git module (enabled by default)
+  git: true,
+
+  // Additional custom modules to include
+  extraModules: [
+    // Your custom modules here
+  ]
 });
 ```
+
+By default, the git module is enabled. You can:
+- Disable the git module by setting `git: false`
+- Add custom modules using the `extraModules` array
+- Create custom modules using `defineBuildMetaModule`
 
 ## Modules
 

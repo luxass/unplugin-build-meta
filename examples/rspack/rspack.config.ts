@@ -50,11 +50,7 @@ export default defineConfig({
     ],
   },
   plugins: [
-    buildMeta({
-      modules: [
-        "git",
-      ],
-    }),
+    buildMeta(),
     new rspack.HtmlRspackPlugin({
       template: "./index.html",
     }),
