@@ -2,6 +2,7 @@ import { defineConfig } from "@rspack/cli";
 import { rspack } from "@rspack/core";
 import * as RefreshPlugin from "@rspack/plugin-react-refresh";
 import buildMeta from "unplugin-build-meta/rspack";
+
 // eslint-disable-next-line node/prefer-global/process
 const isDev = process.env.NODE_ENV === "development";
 

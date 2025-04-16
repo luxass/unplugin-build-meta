@@ -154,11 +154,7 @@
     "test": "vitest --run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit && pnpm -r typecheck",
-    "play:nuxt": "pnpm run --filter @unplugin-build-meta/nuxt dev",
-    "play:vite-vue": "pnpm run --filter @unplugin-build-meta/vite-vue dev",
-    "play:vite-react": "pnpm run --filter @unplugin-build-meta/vite-react dev",
-    "play:nextjs": "pnpm run --filter @unplugin-build-meta/nextjs dev",
-    "play:astro": "pnpm run --filter @unplugin-build-meta/astro dev",
+    "play:vite": "pnpm run --filter @unplugin-build-meta/vite dev",
     "play:rspack": "pnpm run --filter @unplugin-build-meta/rspack dev",
     "generate-types": "node scripts/generate-types.js"
   },
