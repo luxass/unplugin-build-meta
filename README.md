@@ -26,11 +26,11 @@ npm install -D unplugin-build-meta
 
 ```ts
 // vite.config.ts
-import YAMLPlugin from "unplugin-build-meta/vite";
+import buildMeta from "unplugin-build-meta/vite";
 
 export default defineConfig({
   plugins: [
-    YAMLPlugin({ /* options */ }),
+    buildMeta({ /* options */ }),
   ],
 });
 ```
@@ -42,11 +42,11 @@ export default defineConfig({
 
 ```ts
 // rollup.config.js
-import YAMLPlugin from "unplugin-build-meta/rollup";
+import buildMeta from "unplugin-build-meta/rollup";
 
 export default {
   plugins: [
-    YAMLPlugin({ /* options */ }),
+    buildMeta({ /* options */ }),
   ],
 };
 ```
@@ -88,12 +88,12 @@ export default defineNuxtConfig({
 ```ts
 // astro.config.mjs
 import { defineConfig } from "astro/config";
-import YAMLPlugin from "unplugin-build-meta/astro";
+import buildMeta from "unplugin-build-meta/astro";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    YAMLPlugin({
+    buildMeta({
       /* options */
     })
   ]
@@ -108,12 +108,12 @@ export default defineConfig({
 ```ts
 // esbuild.config.js
 import { build } from "esbuild";
-import YAMLPlugin from "unplugin-build-meta/esbuild";
+import buildMeta from "unplugin-build-meta/esbuild";
 
 build({
   /* ... */
   plugins: [
-    YAMLPlugin({
+    buildMeta({
       /* options */
     }),
   ],
@@ -129,14 +129,14 @@ build({
 // farm.config.ts
 import { defineConfig } from "@farmfe/core";
 import vue from "@vitejs/plugin-vue";
-import YAMLPlugin from "unplugin-build-meta/farm";
+import buildMeta from "unplugin-build-meta/farm";
 
 export default defineConfig({
   vitePlugins: [
     vue(),
   ],
   plugins: [
-    YAMLPlugin({
+    buildMeta({
       /* options */
     })
   ]
@@ -151,7 +151,7 @@ export default defineConfig({
 ```ts
 // rspack.config.mjs
 import rspack from "@rspack/core";
-import YAMLPlugin from "unplugin-build-meta/rspack";
+import buildMeta from "unplugin-build-meta/rspack";
 
 /** @type {import('@rspack/core').Configuration} */
 export default {
@@ -159,7 +159,7 @@ export default {
     new rspack.HtmlRspackPlugin({
       template: "./index.html"
     }),
-    YAMLPlugin()
+    buildMeta()
   ],
 };
 ```
@@ -172,12 +172,12 @@ export default {
 ```ts
 // rolldown.config.js
 import { defineConfig } from "rolldown";
-import YAMLPlugin from "unplugin-build-meta/rolldown";
+import buildMeta from "unplugin-build-meta/rolldown";
 
 export default defineConfig({
   input: "./index.js",
   plugins: [
-    YAMLPlugin({
+    buildMeta({
       /* options */
     }),
   ],
@@ -189,24 +189,8 @@ export default defineConfig({
 ## Configuration
 
 ```ts
-YAMLPlugin({
-  include: [
-    /\.yamlcustom$/, // .yamlcustom
-  ],
-  parserOptions: {
-    // see yaml load options
-  }
-});
-```
-
-```ts
-// Configure which modules to include
-export default defineConfig({
-  plugins: [
-    buildMetaPlugin({
-      modules: ["git"] // Include just the git module (default includes all modules)
-    }),
-  ],
+buildMeta({
+  modules: ["git"] // Configure which modules to include
 });
 ```
 
@@ -223,7 +207,7 @@ Import it in your code:
 import * as git from "virtual:build-meta/git";
 
 // Or import specific values
-import { author, branch, sha } from "virtual:build-meta/git";
+import { branch, sha, shortSha } from "virtual:build-meta/git";
 ```
 
 Available properties (all properties are nullable):
@@ -232,18 +216,18 @@ Available properties (all properties are nullable):
 |----------|------|-------------|
 | `branch` | `string \| null` | Current git branch name |
 | `sha` | `string \| null` | Full git commit hash |
-| `abbreviatedSha` | `string \| null` | First 10 characters of the commit hash |
-| `commitMessage` | `string \| null` | Latest commit message |
-| `author` | `string \| null` | Commit author name |
-| `authorEmail` | `string \| null` | Commit author email |
-| `authorDate` | `string \| null` | Commit author date |
-| `committer` | `string \| null` | Committer name |
-| `committerEmail` | `string \| null` | Committer email |
-| `committerDate` | `string \| null` | Committer date |
+| `shortSha` | `string \| null` | First 10 characters of the commit hash |
+| `latestCommitMessage` | `string \| null` | Latest commit message |
+| `commitAuthorName` | `string \| null` | Commit author name |
+| `commitAuthorEmail` | `string \| null` | Commit author email |
+| `commitAuthorDate` | `string \| null` | Commit author date |
+| `commitCommitterName` | `string \| null` | Committer name |
+| `commitCommitterEmail` | `string \| null` | Committer email |
+| `commitCommitterDate` | `string \| null` | Committer date |
 | `tag` | `string \| null` | Current tag (if any) |
 | `tags` | `string[] \| null` | All tags pointing at current commit |
 | `lastTag` | `string \| null` | Latest tag in the repository |
-| `github` | `string \| null` | GitHub repository URL (if applicable) |
+| `repositoryUrl` | `string \| null` | Repository URL (for GitHub repositories) |
 
 ### TypeScript
 

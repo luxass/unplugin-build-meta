@@ -1,7 +1,7 @@
 {
   "name": "unplugin-build-meta",
   "version": "0.0.0",
-  "description": "Allow importing YAML files as JSON or Strings",
+  "description": "Provide build metadata (git info, etc.) to your JavaScript/TypeScript projects",
   "type": "module",
   "author": {
     "name": "Lucas Nørgård",
