@@ -3,7 +3,7 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 
-Allow import YAML file for Vite, Webpack, Rollup and esbuild. With TypeScript support. Powered by [unplugin](https://github.com/unjs/unplugin).
+Import build metadata into your JavaScript/TypeScript projects for Vite, Webpack, Rollup, esbuild and more. Powered by [unplugin](https://github.com/unjs/unplugin).
 
 <p align="center">
 <br />
@@ -198,9 +198,56 @@ YAMLPlugin({
   }
 });
 ```
+
+```ts
+// Configure which modules to include
+export default defineConfig({
+  plugins: [
+    buildMetaPlugin({
+      modules: ["git"] // Include just the git module (default includes all modules)
+    }),
+  ],
+});
+```
+
+## Modules
+
+### Git Module
+
+The git module provides access to repository metadata from your code.
+
+Import it in your code:
+
+```ts
+// Import all git metadata
+import * as git from "virtual:build-meta/git";
+
+// Or import specific values
+import { author, branch, sha } from "virtual:build-meta/git";
+```
+
+Available properties (all properties are nullable):
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `branch` | `string \| null` | Current git branch name |
+| `sha` | `string \| null` | Full git commit hash |
+| `abbreviatedSha` | `string \| null` | First 10 characters of the commit hash |
+| `commitMessage` | `string \| null` | Latest commit message |
+| `author` | `string \| null` | Commit author name |
+| `authorEmail` | `string \| null` | Commit author email |
+| `authorDate` | `string \| null` | Commit author date |
+| `committer` | `string \| null` | Committer name |
+| `committerEmail` | `string \| null` | Committer email |
+| `committerDate` | `string \| null` | Committer date |
+| `tag` | `string \| null` | Current tag (if any) |
+| `tags` | `string[] \| null` | All tags pointing at current commit |
+| `lastTag` | `string \| null` | Latest tag in the repository |
+| `github` | `string \| null` | GitHub repository URL (if applicable) |
+
 ### TypeScript
 
-If you are using TypeScript, you need to add the following to your `tsconfig.json` file:
+To get proper type support, make sure to include the type declarations:
 
 ```json
 {

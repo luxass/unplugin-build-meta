@@ -1,5 +1,5 @@
-import * as git from "build-meta:git";
 import { useState } from "react";
+import * as git from "virtual:build-meta/git";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 

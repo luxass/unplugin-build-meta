@@ -132,7 +132,10 @@
       }
     },
     "./types": {
-      "types": "./yaml.d.ts"
+      "types": "./types/index.d.ts"
+    },
+    "./types/*": {
+      "types": "./types/*.d.ts"
     },
     "./package.json": "./package.json"
   },
@@ -140,9 +143,11 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "types"
   ],
   "scripts": {
+    "prepack": "pnpm run generate-types",
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "eslint .",
@@ -154,7 +159,8 @@
     "play:vite-react": "pnpm run --filter @unplugin-build-meta/vite-react dev",
     "play:nextjs": "pnpm run --filter @unplugin-build-meta/nextjs dev",
     "play:astro": "pnpm run --filter @unplugin-build-meta/astro dev",
-    "play:rspack": "pnpm run --filter @unplugin-build-meta/rspack dev"
+    "play:rspack": "pnpm run --filter @unplugin-build-meta/rspack dev",
+    "generate-types": "node scripts/generate-types.js"
   },
   "peerDependencies": {
     "@nuxt/kit": ">=3",

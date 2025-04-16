@@ -12,5 +12,5 @@ export interface BuildMetaOptions {
    * Which modules to include in the build meta.
    * By default `all` modules are included.
    */
-  modules?: ((Module | "all") | BuildMetaModule)[];
+  modules?: (Module | BuildMetaModule)[];
 }
