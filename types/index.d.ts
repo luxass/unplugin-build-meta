@@ -2,4 +2,4 @@
 // Do not edit manually!
 
 // Re-export git module types
-import './git';
+import "./git";
