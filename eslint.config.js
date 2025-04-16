@@ -5,7 +5,7 @@ import {
 
 export default luxass({}, {
   files: [
-    "**/playground/**/*",
+    "./types",
     "**/test/fixtures/**/*",
   ],
   rules: {
