@@ -1,6 +1,6 @@
 {
   "name": "unplugin-build-meta",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Provide build metadata (git info, etc.) to your JavaScript/TypeScript projects",
   "type": "module",
   "author": {
