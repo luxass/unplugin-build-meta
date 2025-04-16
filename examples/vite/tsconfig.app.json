@@ -21,8 +21,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noEmit": true,
-    "skipLibCheck": true,
     "isolatedModules": true,
+    "skipLibCheck": true,
     "noUncheckedSideEffectImports": true
   },
   "include": ["src"]
