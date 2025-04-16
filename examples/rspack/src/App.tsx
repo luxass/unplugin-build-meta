@@ -1,4 +1,4 @@
-import { branch } from "build-meta:git";
+import * as git from "build-meta:git";
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
@@ -27,7 +27,7 @@ function App() {
           {" "}
           and save to test HMR
           {" "}
-          {branch}
+          {JSON.stringify(git)}
         </p>
       </div>
       <p className="read-the-docs">
