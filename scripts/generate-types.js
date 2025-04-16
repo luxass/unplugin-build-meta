@@ -4,15 +4,15 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-async function extractGitInfoInterface() {
+async function extractGitRepositoryInfoInterface() {
   const gitModulePath = path.resolve(__dirname, "../src/core/modules/git.ts");
   const content = await fs.readFile(gitModulePath, "utf-8");
 
-  // Extract the GitInfo interface using regex
-  const interfaceMatch = content.match(/interface\s+GitInfo\s*\{([^}]+)\}/);
+  // Extract the GitRepositoryInfo interface using regex
+  const interfaceMatch = content.match(/interface\s+GitRepositoryInfo\s*\{([^}]+)\}/);
 
   if (!interfaceMatch || !interfaceMatch[1]) {
-    throw new Error("Could not find GitInfo interface in git.ts");
+    throw new Error("Could not find GitRepositoryInfo interface in git.ts");
   }
 
   const interfaceContent = interfaceMatch[1].trim();
@@ -38,7 +38,7 @@ async function extractGitInfoInterface() {
 async function generateGitModuleTypings() {
   try {
     // Dynamically extract GitInfo interface from the source file
-    const gitInfoTypes = await extractGitInfoInterface();
+    const gitInfoTypes = await extractGitRepositoryInfoInterface();
 
     // Generate the d.ts content
     const content = `// Auto-generated type definitions for unplugin-build-meta git module
@@ -46,7 +46,7 @@ async function generateGitModuleTypings() {
 
 declare module 'virtual:build-meta/git' {
   ${Object.entries(gitInfoTypes)
-    .map(([key, type]) => `export const ${key}: ${type};`)
+    .map(([key, type]) => `declare const ${key}: ${type};`)
     .join("\n  ")}
 }
 `;

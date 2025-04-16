@@ -32,11 +32,11 @@ function App() {
 
           {showGitInfo && (
             <div className="git-details">
-              {git.github && (
+              {git.repositoryUrl && (
                 <div className="git-item">
                   <div className="git-label">Repository</div>
-                  <a href={git.github} target="_blank" rel="noreferrer" className="git-link">
-                    {git.github}
+                  <a href={git.repositoryUrl} target="_blank" rel="noreferrer" className="git-link">
+                    {git.repositoryUrl}
                   </a>
                 </div>
               )}
@@ -48,27 +48,27 @@ function App() {
 
               <div className="git-item">
                 <div className="git-label">Latest Commit</div>
-                <div className="git-value">{git.abbreviatedSha || "Not available"}</div>
-                {git.commitMessage && (
+                <div className="git-value">{git.shortSha || "Not available"}</div>
+                {git.latestCommitMessage && (
                   <div className="git-commit-message">
                     "
-                    {git.commitMessage}
+                    {git.latestCommitMessage}
                     "
                   </div>
                 )}
               </div>
 
-              {git.author && (
+              {git.commitAuthorName && (
                 <div className="git-item">
                   <div className="git-label">Author</div>
                   <div className="git-value">
-                    {git.author}
-                    {git.authorEmail && <span className="git-email">{git.authorEmail}</span>}
-                    {git.authorDate && (
+                    {git.commitAuthorName}
+                    {git.commitAuthorEmail && <span className="git-email">{git.commitAuthorEmail}</span>}
+                    {git.commitAuthorDate && (
                       <span className="git-date">
                         on
                         {" "}
-                        {new Date(git.authorDate).toLocaleDateString()}
+                        {new Date(git.commitAuthorDate).toLocaleDateString()}
                       </span>
                     )}
                   </div>

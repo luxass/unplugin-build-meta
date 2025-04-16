@@ -3,45 +3,45 @@ import parseGitUrl from "git-url-parse";
 import { simpleGit } from "simple-git";
 import { defineBuildMetaModule } from "../../module";
 
-interface GitInfo {
+interface GitRepositoryInfo {
   branch?: string;
   sha?: string;
-  abbreviatedSha?: string;
-  commitMessage?: string;
-  author?: string;
-  authorEmail?: string;
-  authorDate?: string;
-  committer?: string;
-  committerEmail?: string;
-  committerDate?: string;
+  shortSha?: string;
+  latestCommitMessage?: string;
+  commitAuthorName?: string;
+  commitAuthorEmail?: string;
+  commitAuthorDate?: string;
+  commitCommitterName?: string;
+  commitCommitterEmail?: string;
+  commitCommitterDate?: string;
   tag?: string;
   tags?: string[];
   lastTag?: string;
-  github?: string;
+  repositoryUrl?: string;
 }
 
 export default defineBuildMetaModule({
   name: "git",
   load: async () => {
     const git: SimpleGit = simpleGit();
-    const info: GitInfo = {};
+    const info: GitRepositoryInfo = {};
 
-    function generateOutput(data?: GitInfo): string {
-      const keys: Array<keyof GitInfo> = [
-        "github",
+    function generateOutput(data?: GitRepositoryInfo): string {
+      const keys: Array<keyof GitRepositoryInfo> = [
+        "repositoryUrl",
         "sha",
-        "abbreviatedSha",
+        "shortSha",
         "branch",
         "tag",
         "tags",
         "lastTag",
-        "author",
-        "authorEmail",
-        "authorDate",
-        "committer",
-        "committerEmail",
-        "committerDate",
-        "commitMessage",
+        "commitAuthorName",
+        "commitAuthorEmail",
+        "commitAuthorDate",
+        "commitCommitterName",
+        "commitCommitterEmail",
+        "commitCommitterDate",
+        "latestCommitMessage",
       ];
 
       return keys.map((key) =>
@@ -73,11 +73,11 @@ export default defineBuildMetaModule({
       const log = await git.log(["-1"]);
       if (log.latest) {
         info.sha = log.latest.hash;
-        info.abbreviatedSha = log.latest.hash?.slice(0, 10);
-        info.commitMessage = log.latest.message;
-        info.author = log.latest.author_name;
-        info.authorEmail = log.latest.author_email;
-        info.authorDate = log.latest.date;
+        info.shortSha = log.latest.hash?.slice(0, 10);
+        info.latestCommitMessage = log.latest.message;
+        info.commitAuthorName = log.latest.author_name;
+        info.commitAuthorEmail = log.latest.author_email;
+        info.commitAuthorDate = log.latest.date;
       }
     } catch (error) {
       console.error("failed to fetch commit information:", error);
@@ -89,9 +89,9 @@ export default defineBuildMetaModule({
       const committerLines = committerInfo.split("\n").map((line) => line.trim());
 
       if (committerLines.length >= 3) {
-        info.committer = committerLines[0];
-        info.committerEmail = committerLines[1];
-        info.committerDate = committerLines[2];
+        info.commitCommitterName = committerLines[0];
+        info.commitCommitterEmail = committerLines[1];
+        info.commitCommitterDate = committerLines[2];
       }
     } catch (error) {
       console.error("failed to fetch committer information:", error);
@@ -118,7 +118,7 @@ export default defineBuildMetaModule({
       if (origin?.refs.fetch) {
         const parsed = parseGitUrl(origin.refs.fetch);
         if (parsed.resource === "github.com" && parsed.full_name) {
-          info.github = `https://github.com/${parsed.full_name}`;
+          info.repositoryUrl = `https://github.com/${parsed.full_name}`;
         }
       }
     } catch (error) {

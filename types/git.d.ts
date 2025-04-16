@@ -2,18 +2,18 @@
 // Do not edit manually!
 
 declare module 'virtual:build-meta/git' {
-  export const branch: string | null;
-  export const sha: string | null;
-  export const abbreviatedSha: string | null;
-  export const commitMessage: string | null;
-  export const author: string | null;
-  export const authorEmail: string | null;
-  export const authorDate: string | null;
-  export const committer: string | null;
-  export const committerEmail: string | null;
-  export const committerDate: string | null;
-  export const tag: string | null;
-  export const tags: string[] | null;
-  export const lastTag: string | null;
-  export const github: string | null;
+  declare const branch: string | null;
+  declare const sha: string | null;
+  declare const shortSha: string | null;
+  declare const latestCommitMessage: string | null;
+  declare const commitAuthorName: string | null;
+  declare const commitAuthorEmail: string | null;
+  declare const commitAuthorDate: string | null;
+  declare const commitCommitterName: string | null;
+  declare const commitCommitterEmail: string | null;
+  declare const commitCommitterDate: string | null;
+  declare const tag: string | null;
+  declare const tags: string[] | null;
+  declare const lastTag: string | null;
+  declare const repositoryUrl: string | null;
 }
