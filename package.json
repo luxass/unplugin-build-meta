@@ -1,0 +1,220 @@
+{
+  "name": "unplugin-build-meta",
+  "version": "0.0.0",
+  "description": "Allow importing YAML files as JSON or Strings",
+  "type": "module",
+  "author": {
+    "name": "Lucas Nørgård",
+    "email": "lucasnrgaard@gmail.com",
+    "url": "https://luxass.dev"
+  },
+  "packageManager": "pnpm@10.7.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luxass/unplugin-build-meta.git"
+  },
+  "bugs": "https://github.com/luxass/unplugin-build-meta/issues",
+  "keywords": [
+    "build-meta",
+    "git",
+    "sha",
+    "unplugin",
+    "vite",
+    "webpack",
+    "rollup",
+    "esbuild",
+    "nuxt",
+    "astro"
+  ],
+  "workspaces": [
+    "playground/*"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./astro": {
+      "import": {
+        "types": "./dist/astro.d.ts",
+        "default": "./dist/astro.mjs"
+      },
+      "require": {
+        "types": "./dist/astro.d.cts",
+        "default": "./dist/astro.cjs"
+      }
+    },
+    "./farm": {
+      "import": {
+        "types": "./dist/farm.d.ts",
+        "default": "./dist/farm.mjs"
+      },
+      "require": {
+        "types": "./dist/farm.d.cts",
+        "default": "./dist/farm.cjs"
+      }
+    },
+    "./rspack": {
+      "import": {
+        "types": "./dist/rspack.d.ts",
+        "default": "./dist/rspack.mjs"
+      },
+      "require": {
+        "types": "./dist/rspack.d.cts",
+        "default": "./dist/rspack.cjs"
+      }
+    },
+    "./rolldown": {
+      "import": {
+        "types": "./dist/rolldown.d.ts",
+        "default": "./dist/rolldown.mjs"
+      },
+      "require": {
+        "types": "./dist/rolldown.d.cts",
+        "default": "./dist/rolldown.cjs"
+      }
+    },
+    "./esbuild": {
+      "import": {
+        "types": "./dist/esbuild.d.ts",
+        "default": "./dist/esbuild.mjs"
+      },
+      "require": {
+        "types": "./dist/esbuild.d.cts",
+        "default": "./dist/esbuild.cjs"
+      }
+    },
+    "./nuxt": {
+      "import": {
+        "types": "./dist/nuxt.d.ts",
+        "default": "./dist/nuxt.mjs"
+      },
+      "require": {
+        "types": "./dist/nuxt.d.cts",
+        "default": "./dist/nuxt.cjs"
+      }
+    },
+    "./rollup": {
+      "import": {
+        "types": "./dist/rollup.d.ts",
+        "default": "./dist/rollup.mjs"
+      },
+      "require": {
+        "types": "./dist/rollup.d.cts",
+        "default": "./dist/rollup.cjs"
+      }
+    },
+    "./vite": {
+      "import": {
+        "types": "./dist/vite.d.ts",
+        "default": "./dist/vite.mjs"
+      },
+      "require": {
+        "types": "./dist/vite.d.cts",
+        "default": "./dist/vite.cjs"
+      }
+    },
+    "./webpack": {
+      "import": {
+        "types": "./dist/webpack.d.ts",
+        "default": "./dist/webpack.mjs"
+      },
+      "require": {
+        "types": "./dist/webpack.d.cts",
+        "default": "./dist/webpack.cjs"
+      }
+    },
+    "./types": {
+      "types": "./yaml.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint .",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit && pnpm -r typecheck",
+    "play:nuxt": "pnpm run --filter @unplugin-build-meta/nuxt dev",
+    "play:vite-vue": "pnpm run --filter @unplugin-build-meta/vite-vue dev",
+    "play:vite-react": "pnpm run --filter @unplugin-build-meta/vite-react dev",
+    "play:nextjs": "pnpm run --filter @unplugin-build-meta/nextjs dev",
+    "play:astro": "pnpm run --filter @unplugin-build-meta/astro dev",
+    "play:rspack": "pnpm run --filter @unplugin-build-meta/rspack dev"
+  },
+  "peerDependencies": {
+    "@nuxt/kit": ">=3",
+    "@nuxt/schema": ">=3",
+    "@rspack/core": "^1.0.13",
+    "astro": ">=3",
+    "esbuild": "*",
+    "rolldown": ">=0.14.0",
+    "rollup": ">=3",
+    "vite": ">=3",
+    "webpack": "^4 || ^5"
+  },
+  "peerDependenciesMeta": {
+    "@nuxt/kit": {
+      "optional": true
+    },
+    "@nuxt/schema": {
+      "optional": true
+    },
+    "astro": {
+      "optional": true
+    },
+    "esbuild": {
+      "optional": true
+    },
+    "rollup": {
+      "optional": true
+    },
+    "vite": {
+      "optional": true
+    },
+    "webpack": {
+      "optional": true
+    },
+    "@rspack/core": {
+      "optional": true
+    },
+    "rolldown": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "simple-git": "^3.27.0",
+    "unplugin": "catalog:prod"
+  },
+  "devDependencies": {
+    "@luxass/eslint-config": "catalog:dev",
+    "@nuxt/kit": "catalog:dev",
+    "@nuxt/schema": "catalog:dev",
+    "@rspack/core": "catalog:dev",
+    "@types/node": "catalog:dev",
+    "esbuild": "catalog:dev",
+    "eslint": "catalog:dev",
+    "rolldown": "catalog:dev",
+    "rollup": "catalog:dev",
+    "tsup": "catalog:dev",
+    "typescript": "catalog:dev",
+    "vite": "catalog:dev",
+    "vitest": "catalog:dev",
+    "vitest-testdirs": "catalog:dev",
+    "webpack": "catalog:dev"
+  }
+}
