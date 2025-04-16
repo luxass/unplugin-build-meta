@@ -8,18 +8,18 @@
     "preview": "rspack preview"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "catalog:example",
+    "react-dom": "catalog:example"
   },
   "devDependencies": {
-    "@rspack/cli": "^1.3.5",
-    "@rspack/core": "^1.3.5",
-    "@rspack/plugin-react-refresh": "^1.2.0",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1",
-    "react-refresh": "^0.17.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.3",
+    "@rspack/cli": "catalog:example",
+    "@rspack/core": "catalog:dev",
+    "@rspack/plugin-react-refresh": "catalog:example",
+    "@types/react": "catalog:dev",
+    "@types/react-dom": "catalog:dev",
+    "react-refresh": "catalog:example",
+    "ts-node": "catalog:example",
+    "typescript": "catalog:dev",
     "unplugin-build-meta": "workspace:*"
   }
 }

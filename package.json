@@ -199,8 +199,8 @@
     }
   },
   "dependencies": {
-    "git-url-parse": "^16.1.0",
-    "simple-git": "^3.27.0",
+    "git-url-parse": "catalog:prod",
+    "simple-git": "catalog:prod",
     "unplugin": "catalog:prod"
   },
   "devDependencies": {
