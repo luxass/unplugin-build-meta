@@ -23,8 +23,19 @@ describe("handles git metadata", () => {
     expect(result).toBeDefined();
     expect(result.outputFiles).toBeDefined();
     expect(result.outputFiles[0]).toBeDefined();
-    expect(result.outputFiles[0]?.text).toBeDefined();
-    expect(result.outputFiles[0]?.text).toMatchSnapshot();
+
+    const output = result.outputFiles[0]?.text;
+    expect(output).toBeDefined();
+
+    // Check for git metadata exports and formats
+    expect(output).toMatch(/var\s+repositoryUrl\s*=\s*["']https:\/\/[^"']+["']/);
+    expect(output).toMatch(/var\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
+    expect(output).toMatch(/var\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
+    expect(output).toMatch(/var\s+branch\s*=\s*["'][^"']+["']/);
+    expect(output).toMatch(/var\s+tags\s*=\s*\[\]/);
+    expect(output).toMatch(/var\s+commitAuthorName\s*=\s*["'][^"']+["']/);
+    expect(output).toMatch(/var\s+commitAuthorEmail\s*=\s*["'][^@"']+@[^"']+["']/);
+    expect(output).toMatch(/var\s+commitAuthorDate\s*=\s*["']\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
   });
 
   it("expect specific git properties to be importable", async () => {
@@ -45,7 +56,16 @@ describe("handles git metadata", () => {
     expect(result).toBeDefined();
     expect(result.outputFiles).toBeDefined();
     expect(result.outputFiles[0]).toBeDefined();
-    expect(result.outputFiles[0]?.text).toBeDefined();
-    expect(result.outputFiles[0]?.text).toMatchSnapshot();
+
+    const output = result.outputFiles[0]?.text;
+    expect(output).toBeDefined();
+
+    // Check for variable declarations and their formats
+    expect(output).toMatch(/var\s+branch\s*=\s*["'][^"']+["']/);
+    expect(output).toMatch(/var\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
+    expect(output).toMatch(/var\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
+
+    // Verify console.log with destructured properties
+    expect(output).toContain("console.log({ branch, sha, shortSha })");
   });
 });

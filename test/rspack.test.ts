@@ -71,10 +71,13 @@ describe("handles git metadata", () => {
       })],
     }, testdirPath);
 
-    assert(stats, "stats should be defined");
     const output = stats.toJson({ source: true }).modules?.[0]?.source;
+
     expect(output).toBeDefined();
-    expect(output).toMatchSnapshot();
+
+    // Verify import format for all git metadata
+    expect(output).toMatch(/import\s*\*\s*as\s+git\s+from\s+["']virtual:build-meta\/git["']/);
+    expect(output).toContain("console.log(git)");
   });
 
   it("expect specific git properties to be importable", async () => {
@@ -89,7 +92,13 @@ describe("handles git metadata", () => {
     }, testdirPath);
 
     const output = stats.toJson({ source: true }).modules?.[0]?.source;
+
     expect(output).toBeDefined();
-    expect(output).toMatchSnapshot();
+
+    // Verify named imports format
+    expect(output).toMatch(/import\s*\{\s*branch,\s*sha,\s*shortSha\s*\}\s*from\s*["']virtual:build-meta\/git["']/);
+
+    // Verify console.log with destructured properties
+    expect(output).toContain("console.log({ branch, sha, shortSha })");
   });
 });

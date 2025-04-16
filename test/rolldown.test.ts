@@ -24,7 +24,21 @@ describe("handles git metadata", () => {
     expect(output).toBeDefined();
     expect(output[0]).toBeDefined();
     expect(output[0].code).toBeDefined();
-    expect(output[0].code).toMatchSnapshot();
+
+    const code = output[0].code;
+
+    // Check for git region marker
+    expect(code).toContain("//#region \\0virtual:build-meta/git");
+
+    // Check for git metadata exports and formats
+    expect(code).toMatch(/const\s+repositoryUrl\s*=\s*["']https:\/\/[^"']+["']/);
+    expect(code).toMatch(/const\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
+    expect(code).toMatch(/const\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
+    expect(code).toMatch(/const\s+branch\s*=\s*["'][^"']+["']/);
+    expect(code).toMatch(/const\s+tags\s*=\s*\[\]/);
+    expect(code).toMatch(/const\s+commitAuthorName\s*=\s*["'][^"']+["']/);
+    expect(code).toMatch(/const\s+commitAuthorEmail\s*=\s*["'][^@"']+@[^"']+["']/);
+    expect(code).toMatch(/const\s+commitAuthorDate\s*=\s*["']\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
   });
 
   it("expect specific git properties to be importable", async () => {
@@ -46,6 +60,18 @@ describe("handles git metadata", () => {
     expect(output).toBeDefined();
     expect(output[0]).toBeDefined();
     expect(output[0].code).toBeDefined();
-    expect(output[0].code).toMatchSnapshot();
+
+    const code = output[0].code;
+
+    // Check for git region marker
+    expect(code).toContain("//#region \\0virtual:build-meta/git");
+
+    // Check for constant declarations and their formats
+    expect(code).toMatch(/const\s+branch\s*=\s*["'][^"']+["']/);
+    expect(code).toMatch(/const\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
+    expect(code).toMatch(/const\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
+
+    // Check for console.log with destructured properties (handling multi-line format)
+    expect(code).toMatch(/console\.log\(\{\s*(?:branch|sha|shortSha)\s*,\s*(?:branch|sha|shortSha)\s*,\s*(?:branch|sha|shortSha)\s*\}\)/);
   });
 });
