@@ -7,7 +7,7 @@ Import build metadata into your JavaScript/TypeScript projects for Vite, Webpack
 
 <p align="center">
 <br />
-<a href="https://stackblitz.com/github/luxass/unplugin-build-meta/tree/main/examples/vite-vue?file=vite.config.ts"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" /></a>
+<a href="https://stackblitz.com/github/luxass/unplugin-build-meta/tree/main/examples/vite?file=vite.config.ts"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" /></a>
 </p>
 
 ## Install
