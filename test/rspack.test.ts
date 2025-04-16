@@ -1,7 +1,7 @@
 import type { Configuration, Stats } from "@rspack/core";
 import { join } from "node:path";
 import { rspack as createRspack } from "@rspack/core";
-import { assert, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
 import buildMeta from "../src/rspack";
 
