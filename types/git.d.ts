@@ -1,7 +1,7 @@
 // Auto-generated type definitions for unplugin-build-meta git module
 // Do not edit manually!
 
-declare module "virtual:build-meta/git" {
+declare module 'virtual:build-meta/git' {
   declare const branch: string | null;
   declare const sha: string | null;
   declare const shortSha: string | null;
