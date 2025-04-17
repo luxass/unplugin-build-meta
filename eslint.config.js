@@ -5,7 +5,7 @@ import {
 
 export default luxass({}, {
   files: [
-    "./types",
+    "./types/**/*.ts",
     "**/test/fixtures/**/*",
   ],
   rules: {
