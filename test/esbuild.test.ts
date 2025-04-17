@@ -25,7 +25,7 @@ describe("handles git metadata", () => {
     const output = result.outputFiles[0]?.text;
     expect(output).toBeDefined();
 
-    // Check for git metadata exports and formats
+    // check for git metadata exports and formats
     expect(output).toMatch(/var\s+repositoryUrl\s*=\s*["']https:\/\/[^"']+["']/);
     expect(output).toMatch(/var\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
     expect(output).toMatch(/var\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
@@ -38,7 +38,6 @@ describe("handles git metadata", () => {
 
   it("expect specific git properties to be importable", async () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/git"));
-
     expect(testdirPath).toBeDefined();
 
     const result = await build({
@@ -56,12 +55,67 @@ describe("handles git metadata", () => {
     const output = result.outputFiles[0]?.text;
     expect(output).toBeDefined();
 
-    // Check for variable declarations and their formats
+    // check for variable declarations and their formats
     expect(output).toMatch(/var\s+branch\s*=\s*["'][^"']+["']/);
     expect(output).toMatch(/var\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
     expect(output).toMatch(/var\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
 
-    // Verify console.log with destructured properties
+    // verify console.log with destructured properties
     expect(output).toContain("console.log({ branch, sha, shortSha })");
+  });
+});
+
+describe("handles runtime metadata", () => {
+  it("expect runtime metadata to be available", async () => {
+    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/runtime"));
+    expect(testdirPath).toBeDefined();
+
+    const result = await build({
+      entryPoints: [join(testdirPath, "runtime.js")],
+      bundle: true,
+      write: false,
+      format: "esm",
+      plugins: [buildMeta()],
+    });
+
+    expect(result).toBeDefined();
+    expect(result.outputFiles).toBeDefined();
+    expect(result.outputFiles[0]).toBeDefined();
+
+    const output = result.outputFiles[0]?.text;
+    expect(output).toBeDefined();
+
+    // check for runtime metadata exports
+    expect(output).toMatch(/var\s+platform\s*=\s*["'][^"']+["']/);
+    expect(output).toMatch(/var\s+arch\s*=\s*["'][^"']+["']/);
+    expect(output).toMatch(/var\s+versions\s*=\s*\{/);
+  });
+
+  it("expect specific runtime properties to be importable", async () => {
+    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/runtime"));
+    expect(testdirPath).toBeDefined();
+
+    const result = await build({
+      entryPoints: [join(testdirPath, "runtime-specific.js")],
+      bundle: true,
+      write: false,
+      format: "esm",
+      plugins: [buildMeta()],
+    });
+
+    expect(result).toBeDefined();
+    expect(result.outputFiles).toBeDefined();
+    expect(result.outputFiles[0]).toBeDefined();
+
+    const output = result.outputFiles[0]?.text;
+    expect(output).toBeDefined();
+
+    // check for variable declarations and their formats
+    expect(output).toMatch(/var\s+platform\s*=\s*["'][^"']+["']/);
+    expect(output).toMatch(/var\s+arch\s*=\s*["'][^"']+["']/);
+    expect(output).toMatch(/var\s+versions\s*=\s*\{/);
+
+    // verify console.log with destructured properties
+    expect(output).toContain("console.log({ platform, arch, versions })");
   });
 });

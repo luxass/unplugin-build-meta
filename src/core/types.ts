@@ -15,6 +15,12 @@ export interface BuildMetaOptions {
   git?: boolean;
 
   /**
+   * Whether to enable the runtime module.
+   * @default true
+   */
+  runtime?: boolean;
+
+  /**
    * Additional custom modules to include in the build meta.
    */
   extraModules?: BuildMetaModule[];
