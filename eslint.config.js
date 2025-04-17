@@ -5,10 +5,13 @@ import {
 
 export default luxass({}, {
   files: [
-    "./types/**/*.ts",
     "**/test/fixtures/**/*",
   ],
   rules: {
     "no-console": "off",
   },
+}, {
+  ignores: [
+    "./types/**",
+  ],
 });
