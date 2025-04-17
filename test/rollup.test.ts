@@ -25,7 +25,7 @@ describe("handles git metadata", () => {
 
     const code = output[0].code;
 
-    // Check for git metadata exports and formats
+    // check for git metadata exports and formats
     expect(code).toMatch(/const\s+repositoryUrl\s*=\s*["']https:\/\/[^"']+["']/);
     expect(code).toMatch(/const\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
     expect(code).toMatch(/const\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
@@ -38,6 +38,7 @@ describe("handles git metadata", () => {
 
   it("expect specific git properties to be importable", async () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/git"));
+
     expect(testdirPath).toBeDefined();
 
     const bundle = await rollup({
@@ -55,12 +56,12 @@ describe("handles git metadata", () => {
 
     const code = output[0].code;
 
-    // Check for constant declarations and their formats
+    // check for constant declarations and their formats
     expect(code).toMatch(/const\s+branch\s*=\s*["'][^"']+["']/);
     expect(code).toMatch(/const\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
     expect(code).toMatch(/const\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
 
-    // Verify console.log with destructured properties
+    // verify console.log with destructured properties
     expect(code).toContain("console.log({ branch, sha, shortSha })");
   });
 });
@@ -86,7 +87,7 @@ describe("handles runtime metadata", () => {
 
     const code = output[0].code;
 
-    // Check for runtime metadata exports
+    // check for runtime metadata exports
     expect(code).toMatch(/const\s+platform\s*=\s*["'][^"']+["']/);
     expect(code).toMatch(/const\s+arch\s*=\s*["'][^"']+["']/);
     expect(code).toMatch(/const\s+versions\s*=\s*\{/);
@@ -112,12 +113,12 @@ describe("handles runtime metadata", () => {
 
     const code = output[0].code;
 
-    // Check for specific runtime property exports
+    // check for specific runtime property exports
     expect(code).toMatch(/const\s+platform\s*=\s*["'][^"']+["']/);
     expect(code).toMatch(/const\s+arch\s*=\s*["'][^"']+["']/);
     expect(code).toMatch(/const\s+versions\s*=\s*\{/);
 
-    // Verify console.log with destructured properties
+    // verify console.log with destructured properties
     expect(code).toContain("console.log({ platform, arch, versions })");
   });
 });

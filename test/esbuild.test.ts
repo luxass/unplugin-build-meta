@@ -25,7 +25,7 @@ describe("handles git metadata", () => {
     const output = result.outputFiles[0]?.text;
     expect(output).toBeDefined();
 
-    // Check for git metadata exports and formats
+    // check for git metadata exports and formats
     expect(output).toMatch(/var\s+repositoryUrl\s*=\s*["']https:\/\/[^"']+["']/);
     expect(output).toMatch(/var\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
     expect(output).toMatch(/var\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
@@ -38,7 +38,6 @@ describe("handles git metadata", () => {
 
   it("expect specific git properties to be importable", async () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/git"));
-
     expect(testdirPath).toBeDefined();
 
     const result = await build({
@@ -56,12 +55,12 @@ describe("handles git metadata", () => {
     const output = result.outputFiles[0]?.text;
     expect(output).toBeDefined();
 
-    // Check for variable declarations and their formats
+    // check for variable declarations and their formats
     expect(output).toMatch(/var\s+branch\s*=\s*["'][^"']+["']/);
     expect(output).toMatch(/var\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
     expect(output).toMatch(/var\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
 
-    // Verify console.log with destructured properties
+    // verify console.log with destructured properties
     expect(output).toContain("console.log({ branch, sha, shortSha })");
   });
 });
@@ -86,7 +85,7 @@ describe("handles runtime metadata", () => {
     const output = result.outputFiles[0]?.text;
     expect(output).toBeDefined();
 
-    // Check for runtime metadata exports
+    // check for runtime metadata exports
     expect(output).toMatch(/var\s+platform\s*=\s*["'][^"']+["']/);
     expect(output).toMatch(/var\s+arch\s*=\s*["'][^"']+["']/);
     expect(output).toMatch(/var\s+versions\s*=\s*\{/);
@@ -111,12 +110,12 @@ describe("handles runtime metadata", () => {
     const output = result.outputFiles[0]?.text;
     expect(output).toBeDefined();
 
-    // Check for variable declarations and their formats
+    // check for variable declarations and their formats
     expect(output).toMatch(/var\s+platform\s*=\s*["'][^"']+["']/);
     expect(output).toMatch(/var\s+arch\s*=\s*["'][^"']+["']/);
     expect(output).toMatch(/var\s+versions\s*=\s*\{/);
 
-    // Verify console.log with destructured properties
+    // verify console.log with destructured properties
     expect(output).toContain("console.log({ platform, arch, versions })");
   });
 });
