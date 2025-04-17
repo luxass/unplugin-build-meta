@@ -97,3 +97,45 @@ describe("handles git metadata", () => {
     expect(output).toContain("console.log({ branch, sha, shortSha })");
   });
 });
+
+describe("handles runtime metadata", () => {
+  it("expect runtime metadata to be available", async () => {
+    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/runtime"));
+    expect(testdirPath).toBeDefined();
+
+    const { stats } = await webpack({
+      entry: join(testdirPath, "runtime.js"),
+      plugins: [
+        buildMeta(),
+      ],
+    }, testdirPath);
+
+    const output = stats.toJson({ source: true }).modules?.[0]?.source;
+    expect(output).toBeDefined();
+
+    // Verify import format for all runtime metadata
+    expect(output).toMatch(/import\s*\*\s*as\s+runtime\s+from\s*["']virtual:build-meta\/runtime["']/);
+    expect(output).toContain("console.log(runtime)");
+  });
+
+  it("expect specific runtime properties to be importable", async () => {
+    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/runtime"));
+    expect(testdirPath).toBeDefined();
+
+    const { stats } = await webpack({
+      entry: join(testdirPath, "runtime-specific.js"),
+      plugins: [
+        buildMeta(),
+      ],
+    }, testdirPath);
+
+    const output = stats.toJson({ source: true }).modules?.[0]?.source;
+    expect(output).toBeDefined();
+
+    // Verify named imports format (order-independent)
+    expect(output).toMatch(/import\s*\{\s*(?:[a-z]+,\s*){2}[a-z]+\s*\}\s*from\s*["']virtual:build-meta\/runtime["']/);
+
+    // Verify console.log with destructured properties
+    expect(output).toContain("console.log({ platform, arch, versions })");
+  });
+});

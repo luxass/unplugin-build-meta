@@ -16,6 +16,10 @@ export const runtimeModule: BuildMetaModule = {
       versions: process.versions,
     } satisfies RuntimeInfo;
 
-    return `export default ${JSON.stringify(runtime, null, 2)}`;
+    return [
+      `export const platform = ${JSON.stringify(runtime.platform)}`,
+      `export const arch = ${JSON.stringify(runtime.arch)}`,
+      `export const versions = ${JSON.stringify(runtime.versions, null, 2)}`,
+    ].join("\n");
   },
 };

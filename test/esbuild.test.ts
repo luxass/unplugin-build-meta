@@ -65,3 +65,58 @@ describe("handles git metadata", () => {
     expect(output).toContain("console.log({ branch, sha, shortSha })");
   });
 });
+
+describe("handles runtime metadata", () => {
+  it("expect runtime metadata to be available", async () => {
+    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/runtime"));
+    expect(testdirPath).toBeDefined();
+
+    const result = await build({
+      entryPoints: [join(testdirPath, "runtime.js")],
+      bundle: true,
+      write: false,
+      format: "esm",
+      plugins: [buildMeta()],
+    });
+
+    expect(result).toBeDefined();
+    expect(result.outputFiles).toBeDefined();
+    expect(result.outputFiles[0]).toBeDefined();
+
+    const output = result.outputFiles[0]?.text;
+    expect(output).toBeDefined();
+
+    // Check for runtime metadata exports
+    expect(output).toMatch(/var\s+platform\s*=\s*["'][^"']+["']/);
+    expect(output).toMatch(/var\s+arch\s*=\s*["'][^"']+["']/);
+    expect(output).toMatch(/var\s+versions\s*=\s*\{/);
+  });
+
+  it("expect specific runtime properties to be importable", async () => {
+    const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/runtime"));
+    expect(testdirPath).toBeDefined();
+
+    const result = await build({
+      entryPoints: [join(testdirPath, "runtime-specific.js")],
+      bundle: true,
+      write: false,
+      format: "esm",
+      plugins: [buildMeta()],
+    });
+
+    expect(result).toBeDefined();
+    expect(result.outputFiles).toBeDefined();
+    expect(result.outputFiles[0]).toBeDefined();
+
+    const output = result.outputFiles[0]?.text;
+    expect(output).toBeDefined();
+
+    // Check for variable declarations and their formats
+    expect(output).toMatch(/var\s+platform\s*=\s*["'][^"']+["']/);
+    expect(output).toMatch(/var\s+arch\s*=\s*["'][^"']+["']/);
+    expect(output).toMatch(/var\s+versions\s*=\s*\{/);
+
+    // Verify console.log with destructured properties
+    expect(output).toContain("console.log({ platform, arch, versions })");
+  });
+});
