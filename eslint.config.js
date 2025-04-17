@@ -12,6 +12,6 @@ export default luxass({}, {
   },
 }, {
   ignores: [
-    "./types/**",
+    "types/**/*",
   ],
 });
