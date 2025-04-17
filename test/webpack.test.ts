@@ -123,7 +123,7 @@ describe("handles runtime metadata", () => {
     expect(output).toBeDefined();
 
     // verify named imports format
-    expect(output).toMatch(/import\s*\{\s*platform,\s*arch,\s*versions\s*\}\s*from\s*["']virtual:build-meta\/runtime["']/);
+    expect(output).toMatch(/import\s*\{\s*arch,\s*platform,\s*versions\s*\}\s*from\s*["']virtual:build-meta\/runtime["']/);
 
     // verify console.log with destructured properties
     expect(output).toContain("console.log({ platform, arch, versions })");
