@@ -3,6 +3,7 @@ import type { BuildMetaModule, BuildMetaOptions } from "./types";
 import { createUnplugin } from "unplugin";
 import { PLUGIN_NAME } from "./constants";
 import gitModule from "./modules/git";
+import { runtimeModule } from "./modules/runtime";
 
 export type { BuildMetaOptions };
 
@@ -13,12 +14,16 @@ const PREFIX_WITH_NULL = `\0${PREFIX}`;
  * A unplugin factory, used by Unplugin to create a new plugin instance.
  */
 export const unpluginFactory: UnpluginFactory<BuildMetaOptions | undefined> = (options = {}) => {
-  const { git = true, extraModules = [] } = options;
+  const { git = true, extraModules = [], runtime = true } = options;
 
   const modules: BuildMetaModule[] = [];
 
   if (git) {
     modules.push(gitModule);
+  }
+
+  if (runtime) {
+    modules.push(runtimeModule);
   }
 
   // Add any extra custom modules
