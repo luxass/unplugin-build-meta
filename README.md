@@ -240,6 +240,28 @@ Available properties (all properties are nullable):
 | `lastTag` | `string \| null` | Latest tag in the repository |
 | `repositoryUrl` | `string \| null` | Repository URL (for GitHub repositories) |
 
+### Runtime Module
+
+The runtime module provides access to Node.js runtime information from your code.
+
+Import it in your code:
+
+```ts
+// Import all runtime information
+import * as runtime from "virtual:build-meta/runtime";
+
+// Or import specific values
+import { arch, platform, versions } from "virtual:build-meta/runtime";
+```
+
+Available properties:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `platform` | `NodeJS.Platform` | The operating system platform (e.g., 'linux', 'darwin', 'win32') |
+| `arch` | `NodeJS.Architecture` | The CPU architecture (e.g., 'x64', 'arm64') |
+| `versions` | `NodeJS.ProcessVersions` | Version strings of Node.js and its dependencies |
+
 ### TypeScript
 
 To get proper type support, make sure to include the type declarations:
