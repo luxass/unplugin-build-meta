@@ -294,8 +294,8 @@ packages:
     resolution: {integrity: sha512-U5eyP/CTFPuNE3qk+WZMxFkp/4zUzdceQlfzf7DdGdhp+Fezd7HD+i8Y24ZuTMKX3wQBld449jijbGq6OdGNQg==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/parser@7.27.1':
-    resolution: {integrity: sha512-I0dZ3ZpCrJ1c04OqlNsQcKiZlsrXf/kkE4FXzID9rIOYICsAbA8mMDzhW/luRNAHdCNt7os/u8wenklZDlUVUQ==}
+  '@babel/parser@7.27.2':
+    resolution: {integrity: sha512-QYLs8299NA7WM/bZAdp+CviYYkVoYXlDW2rzliy3chxd1PQjej7JORuMJDJXJUb9g0TT+B99EwaVLKmX+sPXWw==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -4714,7 +4714,7 @@ snapshots:
       '@babel/helper-compilation-targets': 7.27.0
       '@babel/helper-module-transforms': 7.26.0(@babel/core@7.26.10)
       '@babel/helpers': 7.27.0
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@babel/template': 7.27.0
       '@babel/traverse': 7.27.0
       '@babel/types': 7.27.1
@@ -4728,7 +4728,7 @@ snapshots:
 
   '@babel/generator@7.27.0':
     dependencies:
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@babel/types': 7.27.1
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
@@ -4771,7 +4771,7 @@ snapshots:
       '@babel/template': 7.27.0
       '@babel/types': 7.27.1
 
-  '@babel/parser@7.27.1':
+  '@babel/parser@7.27.2':
     dependencies:
       '@babel/types': 7.27.1
 
@@ -4788,14 +4788,14 @@ snapshots:
   '@babel/template@7.27.0':
     dependencies:
       '@babel/code-frame': 7.26.2
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@babel/types': 7.27.1
 
   '@babel/traverse@7.27.0':
     dependencies:
       '@babel/code-frame': 7.26.2
       '@babel/generator': 7.27.0
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@babel/template': 7.27.0
       '@babel/types': 7.27.1
       debug: 4.4.0
@@ -5609,7 +5609,7 @@ snapshots:
 
   '@types/babel__core@7.20.5':
     dependencies:
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@babel/types': 7.27.1
       '@types/babel__generator': 7.27.0
       '@types/babel__template': 7.4.4
@@ -5621,7 +5621,7 @@ snapshots:
 
   '@types/babel__template@7.4.4':
     dependencies:
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@babel/types': 7.27.1
 
   '@types/babel__traverse@7.20.7':
@@ -5941,7 +5941,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -5954,7 +5954,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
@@ -7619,7 +7619,7 @@ snapshots:
 
   magicast@0.3.5:
     dependencies:
-      '@babel/parser': 7.27.1
+      '@babel/parser': 7.27.2
       '@babel/types': 7.27.1
       source-map-js: 1.2.1
 
