@@ -52,8 +52,8 @@ catalogs:
       specifier: ^3.0.9
       version: 3.0.9
     vitest-testdirs:
-      specifier: ^2.2.0
-      version: 2.2.0
+      specifier: ^4.0.0
+      version: 4.0.0
     webpack:
       specifier: ^5.98.0
       version: 5.98.0
@@ -148,7 +148,7 @@ importers:
         version: 3.0.9(@types/debug@4.1.12)(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1)
       vitest-testdirs:
         specifier: catalog:dev
-        version: 2.2.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1))
+        version: 4.0.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1))
       webpack:
         specifier: catalog:dev
         version: 5.98.0(esbuild@0.25.1)
@@ -3985,9 +3985,9 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  testdirs@1.0.0:
-    resolution: {integrity: sha512-pT37O3F1bygko7JfQizIhyEE5O1vAcpqAU2BkHjMqqMkMct12kmMpct/MZURo1YBgXgitNdDiXPeGx4KO8g/HA==}
-    engines: {node: '>=18'}
+  testdirs@3.0.0:
+    resolution: {integrity: sha512-2G7stHEavnUbvsS9LyGieuVyUVNVXAgeMfqiUtebmA63yJSgC6JBv3eTk3rmmDfrjB8wv1z+45Bn/awEI6e/yw==}
+    engines: {node: '>=20'}
 
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
@@ -4406,9 +4406,9 @@ packages:
       vite:
         optional: true
 
-  vitest-testdirs@2.2.0:
-    resolution: {integrity: sha512-4tEs8Wqti3fzc13vAKHQQmg8L+GGcmcvvEj5AOxMN+AB5QX3TNOH2bwZ8t4xkQLIMkpqlwObjmr7l9Ws+FsB+w==}
-    engines: {node: '>=18'}
+  vitest-testdirs@4.0.0:
+    resolution: {integrity: sha512-gfX3bh5B3iqPioz0PudaJc/sPT7kuoRKUDK3Dng5k7/4O5usb3jV1/563lxshQUJO56JU1XELQFhHdQbHUqBbg==}
+    engines: {node: '>=20'}
     peerDependencies:
       vitest: '>=2.0.5 <4.0.0'
 
@@ -8923,7 +8923,7 @@ snapshots:
       commander: 2.20.3
       source-map-support: 0.5.21
 
-  testdirs@1.0.0: {}
+  testdirs@3.0.0: {}
 
   thenify-all@1.6.0:
     dependencies:
@@ -9274,9 +9274,9 @@ snapshots:
     optionalDependencies:
       vite: 6.3.4(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1)
 
-  vitest-testdirs@2.2.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1)):
+  vitest-testdirs@4.0.0(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1)):
     dependencies:
-      testdirs: 1.0.0
+      testdirs: 3.0.0
       vitest: 3.0.9(@types/debug@4.1.12)(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1)
 
   vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1):
