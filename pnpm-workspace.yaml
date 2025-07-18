@@ -11,7 +11,7 @@ catalogs:
     "@types/react-dom": ^19.1.6
     esbuild: ^0.25.5
     eslint: ^9.30.1
-    rolldown: 1.0.0-beta.24
+    rolldown: 1.0.0-beta.26
     rollup: ^4.44.1
     tsup: ^8.5.0
     typescript: ^5.8.3
@@ -21,7 +21,7 @@ catalogs:
     webpack: ^5.99.9
 
   example:
-    "@rspack/cli": 1.4.5
+    "@rspack/cli": 1.4.6
     "@rspack/plugin-react-refresh": ^1.4.3
     "@tailwindcss/vite": ^4.1.11
     "@vitejs/plugin-react": ^4.6.0
