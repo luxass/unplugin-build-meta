@@ -30,6 +30,11 @@ async function webpack(config: Configuration, testdirPath: string): Promise<Webp
       ...config,
     });
 
+    if (compiler == null) {
+      reject(new Error("webpack compiler not created"));
+      return;
+    }
+
     compiler.run((err, stats) => {
       if (err) {
         reject(err);
