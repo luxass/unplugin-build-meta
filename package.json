@@ -1,6 +1,6 @@
 {
   "name": "unplugin-build-meta",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Provide build metadata as a virutal module",
   "type": "module",
   "author": {
