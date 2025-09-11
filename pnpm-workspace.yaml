@@ -21,7 +21,7 @@ catalogs:
     webpack: ^5.101.3
 
   example:
-    "@rspack/cli": 1.5.1
+    "@rspack/cli": 1.5.2
     "@rspack/plugin-react-refresh": ^1.5.0
     "@tailwindcss/vite": ^4.1.12
     "@vitejs/plugin-react": ^5.0.2
