@@ -26,12 +26,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: taiki-e/install-action@2fdc5fd6ac805b0f8256893bd4c807bcb666af00 # v2.61.8
-        with:
-          tool: zizmor
+      - name: install uv
+        uses: astral-sh/setup-uv@b75a909f75acd358c2196fb9a5f1299a9a8868a4 # v6.7.0
 
       - name: run zizmor
-        run: zizmor --format sarif . > results.sarif
+        run: uvx zizmor --format sarif . > results.sarif
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
