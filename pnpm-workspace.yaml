@@ -16,7 +16,7 @@ catalogs:
     tsup: 8.5.0
     typescript: 5.9.2
     vite: ^7.1.5
-    vitest: ^3.2.4
+    vitest: 3.2.4
     vitest-testdirs: 4.2.1
     webpack: 5.101.3
 
