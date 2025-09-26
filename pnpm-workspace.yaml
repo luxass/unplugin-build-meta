@@ -5,14 +5,14 @@ catalogs:
     "@luxass/eslint-config": 5.3.2
     "@nuxt/kit": 4.1.2
     "@nuxt/schema": 4.1.2
-    "@rspack/core": 1.5.3
-    "@types/node": 22.18.3
+    "@rspack/core": 1.5.5
+    "@types/node": 22.18.6
     "@types/react": 19.1.13
     "@types/react-dom": 19.1.9
-    esbuild: 0.25.9
+    esbuild: 0.25.10
     eslint: ^9.35.0
-    rolldown: 1.0.0-beta.37
-    rollup: 4.50.1
+    rolldown: 1.0.0-beta.38
+    rollup: 4.52.0
     tsup: 8.5.0
     typescript: 5.9.2
     vite: 7.1.6
@@ -21,7 +21,7 @@ catalogs:
     webpack: 5.101.3
 
   example:
-    "@rspack/cli": 1.5.3
+    "@rspack/cli": 1.5.5
     "@rspack/plugin-react-refresh": 1.5.1
     "@tailwindcss/vite": 4.1.13
     "@vitejs/plugin-react": 5.0.3
