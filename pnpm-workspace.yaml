@@ -5,8 +5,8 @@ catalogs:
     "@luxass/eslint-config": 6.0.1
     "@nuxt/kit": 4.2.0
     "@nuxt/schema": 4.2.0
-    "@rspack/core": 1.5.8
-    "@types/node": 22.18.3
+    "@rspack/core": 1.6.0
+    "@types/node": 22.18.13
     "@types/react": 19.2.2
     "@types/react-dom": 19.2.2
     esbuild: 0.25.11
@@ -21,7 +21,7 @@ catalogs:
     webpack: 5.102.1
 
   example:
-    "@rspack/cli": 1.5.8
+    "@rspack/cli": 1.6.0
     "@rspack/plugin-react-refresh": 1.5.2
     "@tailwindcss/vite": 4.1.16
     "@vitejs/plugin-react": 5.1.0
@@ -32,7 +32,7 @@ catalogs:
 
   prod:
     git-url-parse: 16.1.0
-    simple-git: 3.28.0
+    simple-git: 3.29.0
     unplugin: 2.3.10
 
 onlyBuiltDependencies:
