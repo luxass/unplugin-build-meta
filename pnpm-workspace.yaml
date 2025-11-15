@@ -10,7 +10,7 @@ catalogs:
     "@nuxt/kit": 4.2.1
     "@nuxt/schema": 4.2.1
     "@rspack/core": 1.6.3
-    "@types/node": 22.19.0
+    "@types/node": 24.10.0
     "@types/react": 19.2.5
     "@types/react-dom": 19.2.3
     esbuild: 0.27.0
