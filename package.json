@@ -75,6 +75,12 @@
       "import": "./dist/webpack.mjs",
       "require": "./dist/webpack.cjs"
     },
+    "./types": {
+      "types": "./types/index.d.ts"
+    },
+    "./types/*": {
+      "types": "./types/*.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.cjs",
@@ -158,5 +164,60 @@
     "vitest": "catalog:dev",
     "vitest-testdirs": "catalog:dev",
     "webpack": "catalog:dev"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "require": "./dist/index.cjs",
+        "import": "./dist/index.mjs"
+      },
+      "./astro": {
+        "require": "./dist/astro.cjs",
+        "import": "./dist/astro.mjs"
+      },
+      "./esbuild": {
+        "require": "./dist/esbuild.cjs",
+        "import": "./dist/esbuild.mjs"
+      },
+      "./farm": {
+        "require": "./dist/farm.cjs",
+        "import": "./dist/farm.mjs"
+      },
+      "./module": {
+        "require": "./dist/module.cjs",
+        "import": "./dist/module.mjs"
+      },
+      "./nuxt": {
+        "require": "./dist/nuxt.cjs",
+        "import": "./dist/nuxt.mjs"
+      },
+      "./rolldown": {
+        "require": "./dist/rolldown.cjs",
+        "import": "./dist/rolldown.mjs"
+      },
+      "./rollup": {
+        "require": "./dist/rollup.cjs",
+        "import": "./dist/rollup.mjs"
+      },
+      "./rspack": {
+        "require": "./dist/rspack.cjs",
+        "import": "./dist/rspack.mjs"
+      },
+      "./vite": {
+        "require": "./dist/vite.cjs",
+        "import": "./dist/vite.mjs"
+      },
+      "./webpack": {
+        "require": "./dist/webpack.cjs",
+        "import": "./dist/webpack.mjs"
+      },
+      "./package.json": "./package.json",
+      "./types": {
+        "types": "./types/index.d.ts"
+      },
+      "./types/*": {
+        "types": "./types/*.d.ts"
+      }
+    }
   }
 }

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "rspack dev",
     "build": "rspack build",
-    "preview": "rspack preview"
+    "preview": "rspack preview",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "react": "catalog:example",
