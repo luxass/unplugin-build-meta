@@ -6,39 +6,39 @@ overrides:
 
 catalogs:
   dev:
-    "@luxass/eslint-config": 6.0.3
-    "@nuxt/kit": 4.3.0
-    "@nuxt/schema": 4.3.0
-    "@rspack/core": 1.7.4
-    "@types/node": 24.10.0
-    "@types/react": 19.2.10
-    "@types/react-dom": 19.2.3
-    esbuild: 0.27.2
-    eslint: 9.39.2
-    publint: 0.3.17
-    rolldown: 1.0.0-rc.2
-    rollup: 4.57.1
-    tsdown: 0.20.1
-    typescript: 5.9.3
-    vite: 7.3.1
-    vitest: 4.0.18
-    vitest-testdirs: 4.3.0
-    webpack: 5.104.1
+    "@luxass/eslint-config": ^6.0.3
+    "@nuxt/kit": ^4.3.0
+    "@nuxt/schema": ^4.3.0
+    "@rspack/core": ^1.7.4
+    "@types/node": ^24.10.0
+    "@types/react": ^19.2.10
+    "@types/react-dom": ^19.2.3
+    esbuild: ^0.27.2
+    eslint: ^9.39.2
+    publint: ^0.3.17
+    rolldown: ^1.0.0-rc.2
+    rollup: ^4.57.1
+    tsdown: ^0.20.1
+    typescript: ^5.9.3
+    vite: ^7.3.1
+    vitest: ^4.0.18
+    vitest-testdirs: ^4.3.0
+    webpack: ^5.104.1
 
   example:
-    "@rspack/cli": 1.7.4
-    "@rspack/plugin-react-refresh": 1.6.0
-    "@tailwindcss/vite": 4.1.18
-    "@vitejs/plugin-react": 5.1.2
-    react: 19.2.4
-    react-dom: 19.2.4
-    react-refresh: 0.18.0
-    ts-node: 10.9.2
+    "@rspack/cli": ^1.7.4
+    "@rspack/plugin-react-refresh": ^1.6.0
+    "@tailwindcss/vite": ^4.1.18
+    "@vitejs/plugin-react": ^5.1.2
+    react: ^19.2.4
+    react-dom: ^19.2.4
+    react-refresh: ^0.18.0
+    ts-node: ^10.9.2
 
   prod:
-    git-url-parse: 16.1.0
-    simple-git: 3.30.0
-    unplugin: 3.0.0
+    git-url-parse: ^16.1.0
+    simple-git: ^3.30.0
+    unplugin: ^3.0.0
 
 onlyBuiltDependencies:
   - esbuild
