@@ -1,3 +1,5 @@
+shellEmulator: true
+trustPolicy: no-downgrade
 packages:
   - examples/**
 
@@ -28,7 +30,6 @@ catalogs:
   example:
     "@rspack/cli": ^1.7.6
     "@rspack/plugin-react-refresh": ^1.6.1
-    "@tailwindcss/vite": ^4.1.18
     "@vitejs/plugin-react": ^5.1.4
     react: ^19.2.4
     react-dom: ^19.2.4
