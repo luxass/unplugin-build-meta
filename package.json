@@ -31,50 +31,17 @@
     "playground/*"
   ],
   "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
-    "./astro": {
-      "import": "./dist/astro.mjs",
-      "require": "./dist/astro.cjs"
-    },
-    "./esbuild": {
-      "import": "./dist/esbuild.mjs",
-      "require": "./dist/esbuild.cjs"
-    },
-    "./farm": {
-      "import": "./dist/farm.mjs",
-      "require": "./dist/farm.cjs"
-    },
-    "./module": {
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
-    },
-    "./nuxt": {
-      "import": "./dist/nuxt.mjs",
-      "require": "./dist/nuxt.cjs"
-    },
-    "./rolldown": {
-      "import": "./dist/rolldown.mjs",
-      "require": "./dist/rolldown.cjs"
-    },
-    "./rollup": {
-      "import": "./dist/rollup.mjs",
-      "require": "./dist/rollup.cjs"
-    },
-    "./rspack": {
-      "import": "./dist/rspack.mjs",
-      "require": "./dist/rspack.cjs"
-    },
-    "./vite": {
-      "import": "./dist/vite.mjs",
-      "require": "./dist/vite.cjs"
-    },
-    "./webpack": {
-      "import": "./dist/webpack.mjs",
-      "require": "./dist/webpack.cjs"
-    },
+    ".": "./dist/index.mjs",
+    "./astro": "./dist/astro.mjs",
+    "./esbuild": "./dist/esbuild.mjs",
+    "./farm": "./dist/farm.mjs",
+    "./module": "./dist/module.mjs",
+    "./nuxt": "./dist/nuxt.mjs",
+    "./rolldown": "./dist/rolldown.mjs",
+    "./rollup": "./dist/rollup.mjs",
+    "./rspack": "./dist/rspack.mjs",
+    "./vite": "./dist/vite.mjs",
+    "./webpack": "./dist/webpack.mjs",
     "./types": {
       "types": "./types/index.d.ts"
     },
@@ -83,8 +50,6 @@
     },
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
   "files": [
     "dist",
