@@ -16,7 +16,7 @@ catalogs:
     "@types/react": ^19.2.14
     "@types/react-dom": ^19.2.3
     esbuild: ^0.27.3
-    eslint: ^9.39.2
+    eslint: ^10.0.0
     publint: ^0.3.17
     rolldown: ^1.0.0-rc.4
     rollup: ^4.57.1
