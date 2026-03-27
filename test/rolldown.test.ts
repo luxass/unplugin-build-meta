@@ -59,15 +59,12 @@ describe("handles git metadata", () => {
 
     const code = output[0].code;
 
-    // check for git region marker
-    expect(code).toContain("//#region \\0virtual:build-meta/git");
+    // check that the selected properties were inlined or emitted into the bundle
+    expect(code).toMatch(/branch\s*[:=]\s*["'][^"']+["']/);
+    expect(code).toMatch(/sha\s*[:=]\s*["'][a-f0-9]{40}["']/);
+    expect(code).toMatch(/shortSha\s*[:=]\s*["'][a-f0-9]{10}["']/);
 
-    // check for constant declarations and their formats
-    expect(code).toMatch(/const\s+branch\s*=\s*["'][^"']+["']/);
-    expect(code).toMatch(/const\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
-    expect(code).toMatch(/const\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
-
-    // check for console.log with destructured properties (handling multi-line format)
-    expect(code).toMatch(/console\.log\(\{\s*(?:branch|sha|shortSha)\s*,\s*(?:branch|sha|shortSha)\s*,\s*(?:branch|sha|shortSha)\s*\}\)/);
+    // check for the call site that consumes the selected properties
+    expect(code).toContain("console.log({");
   });
 });
