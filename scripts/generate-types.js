@@ -3,13 +3,17 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const GIT_INTERFACE_REGEX = /interface\s+GitRepositoryInfo\s*\{([^}]+)\}/;
+const RUNTIME_INTERFACE_REGEX = /interface\s+RuntimeInfo\s*\{([^}]+)\}/;
+// eslint-disable-next-line regexp/no-super-linear-backtracking
+const PROPERTY_REGEX = /^\s*(\w+)\??:\s*([^;/]+);?\s*(\/\/.*)?$/;
 
 async function extractGitModuleType() {
   const gitModulePath = path.resolve(__dirname, "../src/core/modules/git.ts");
   const content = await fs.readFile(gitModulePath, "utf-8");
 
   // Extract the GitRepositoryInfo interface using regex
-  const interfaceMatch = content.match(/interface\s+GitRepositoryInfo\s*\{([^}]+)\}/);
+  const interfaceMatch = content.match(GIT_INTERFACE_REGEX);
 
   if (!interfaceMatch || !interfaceMatch[1]) {
     throw new Error("Could not find GitRepositoryInfo interface in git.ts");
@@ -23,8 +27,8 @@ async function extractGitModuleType() {
 
   for (const line of propertyLines) {
     // Match property name and type, accounting for optional properties (?) and comments
-    // eslint-disable-next-line regexp/no-super-linear-backtracking
-    const propertyMatch = line.match(/^\s*(\w+)\??:\s*([^;/]+);?\s*(\/\/.*)?$/);
+
+    const propertyMatch = line.match(PROPERTY_REGEX);
     if (propertyMatch) {
       const [, propertyName, propertyType] = propertyMatch;
       // Convert optional properties to use "| null" in the output type
@@ -40,7 +44,7 @@ async function extractRuntimeModuleType() {
   const content = await fs.readFile(runtimeModulePath, "utf-8");
 
   // Extract the GitRepositoryInfo interface using regex
-  const interfaceMatch = content.match(/interface\s+RuntimeInfo\s*\{([^}]+)\}/);
+  const interfaceMatch = content.match(RUNTIME_INTERFACE_REGEX);
 
   if (!interfaceMatch || !interfaceMatch[1]) {
     throw new Error("Could not find RuntimeInfo interface in git.ts");
@@ -54,8 +58,8 @@ async function extractRuntimeModuleType() {
 
   for (const line of propertyLines) {
     // Match property name and type, accounting for optional properties (?) and comments
-    // eslint-disable-next-line regexp/no-super-linear-backtracking
-    const propertyMatch = line.match(/^\s*(\w+)\??:\s*([^;/]+);?\s*(\/\/.*)?$/);
+
+    const propertyMatch = line.match(PROPERTY_REGEX);
     if (propertyMatch) {
       const [, propertyName, propertyType] = propertyMatch;
       // Convert optional properties to use "| null" in the output type
