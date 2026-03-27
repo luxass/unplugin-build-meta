@@ -12,7 +12,8 @@ interface WebpackResult {
 }
 
 function getFirstModuleSource(stats: Stats): string | undefined {
-  return stats.toJson({ source: true }).modules?.find((module) => typeof module.source === "string" && module.source.length > 0)?.source;
+  const module = stats.toJson({ source: true }).modules?.find((module) => typeof module.source === "string" && module.source.length > 0);
+  return typeof module?.source === "string" ? module.source : undefined;
 }
 
 async function webpack(config: Configuration, testdirPath: string): Promise<WebpackResult> {
