@@ -11,6 +11,10 @@ interface WebpackResult {
   file: string;
 }
 
+function getFirstModuleSource(stats: Stats): string | undefined {
+  return stats.toJson({ source: true }).modules?.find(module => typeof module.source === "string" && module.source.length > 0)?.source;
+}
+
 async function webpack(config: Configuration, testdirPath: string): Promise<WebpackResult> {
   return new Promise((resolve, reject) => {
     const compiler = createWebpack({
@@ -69,7 +73,7 @@ describe("handles git metadata", () => {
       plugins: [buildMeta()],
     }, testdirPath);
 
-    const output = stats.toJson({ source: true }).modules?.[0]?.source;
+    const output = getFirstModuleSource(stats);
     expect(output).toBeDefined();
 
     // verify import format for all git metadata
@@ -86,7 +90,7 @@ describe("handles git metadata", () => {
       plugins: [buildMeta()],
     }, testdirPath);
 
-    const output = stats.toJson({ source: true }).modules?.[0]?.source;
+    const output = getFirstModuleSource(stats);
     expect(output).toBeDefined();
 
     // verify named imports format
@@ -107,7 +111,7 @@ describe("handles runtime metadata", () => {
       plugins: [buildMeta()],
     }, testdirPath);
 
-    const output = stats.toJson({ source: true }).modules?.[0]?.source;
+    const output = getFirstModuleSource(stats);
     expect(output).toBeDefined();
 
     // verify import format for all runtime metadata
@@ -124,7 +128,7 @@ describe("handles runtime metadata", () => {
       plugins: [buildMeta()],
     }, testdirPath);
 
-    const output = stats.toJson({ source: true }).modules?.[0]?.source;
+    const output = getFirstModuleSource(stats);
     expect(output).toBeDefined();
 
     // verify named imports format
