@@ -8,29 +8,29 @@ overrides:
 
 catalogs:
   dev:
-    "@luxass/eslint-config": ^7.2.0
-    "@nuxt/kit": ^4.3.1
-    "@nuxt/schema": ^4.3.1
-    "@rspack/core": ^1.7.6
+    "@luxass/eslint-config": ^7.3.0
+    "@nuxt/kit": ^4.4.2
+    "@nuxt/schema": ^4.4.2
+    "@rspack/core": ^1.7.10
     "@types/node": ^24.10.0
     "@types/react": ^19.2.14
     "@types/react-dom": ^19.2.3
-    esbuild: ^0.27.3
-    eslint: ^9.39.2
-    publint: ^0.3.17
-    rolldown: ^1.0.0-rc.4
-    rollup: ^4.57.1
-    tsdown: ^0.20.3
-    typescript: ^5.9.3
-    vite: ^7.3.1
-    vitest: ^4.0.18
-    vitest-testdirs: ^4.4.2
-    webpack: ^5.105.2
+    esbuild: ^0.27.4
+    eslint: ^10.1.0
+    publint: ^0.3.18
+    rolldown: ^1.0.0-rc.12
+    rollup: ^4.60.0
+    tsdown: ^0.21.5
+    typescript: ^6.0.2
+    vite: ^8.0.3
+    vitest: ^4.1.2
+    vitest-testdirs: ^4.4.3
+    webpack: ^5.105.4
 
   example:
-    "@rspack/cli": ^1.7.6
+    "@rspack/cli": ^1.7.10
     "@rspack/plugin-react-refresh": ^1.6.1
-    "@vitejs/plugin-react": ^5.1.4
+    "@vitejs/plugin-react": ^6.0.1
     react: ^19.2.4
     react-dom: ^19.2.4
     react-refresh: ^0.18.0
@@ -38,7 +38,7 @@ catalogs:
 
   prod:
     git-url-parse: ^16.1.0
-    simple-git: ^3.31.1
+    simple-git: ^3.33.0
     unplugin: ^3.0.0
 
 onlyBuiltDependencies:
