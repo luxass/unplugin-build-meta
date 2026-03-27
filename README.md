@@ -123,29 +123,6 @@ build({
 <br/></details>
 
 <details>
-<summary>Farm</summary><br/>
-
-```ts
-// farm.config.ts
-import { defineConfig } from "@farmfe/core";
-import vue from "@vitejs/plugin-vue";
-import buildMeta from "unplugin-build-meta/farm";
-
-export default defineConfig({
-  vitePlugins: [
-    vue(),
-  ],
-  plugins: [
-    buildMeta({
-      /* options */
-    })
-  ]
-});
-```
-
-<br/></details>
-
-<details>
 <summary>Rspack</summary><br/>
 
 ```ts
