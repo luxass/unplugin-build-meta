@@ -104,7 +104,7 @@ export default defineBuildMetaModule({
       const allTags = await git.tags();
 
       info.tags = tagsResult.all;
-      info.tag = tagsResult.all[tagsResult.all.length - 1];
+      info.tag = tagsResult.all.at(-1);
       info.lastTag = allTags.latest;
     } catch (error) {
       console.error("failed to fetch tags information:", error);
