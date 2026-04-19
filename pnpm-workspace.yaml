@@ -20,7 +20,7 @@ catalogs:
     "@types/node": ^24.10.0
     "@types/react": ^19.2.14
     "@types/react-dom": ^19.2.3
-    esbuild: ^0.27.4
+    esbuild: ^0.28.0
     eslint: ^10.1.0
     publint: ^0.3.18
     rolldown: ^1.0.0-rc.12
