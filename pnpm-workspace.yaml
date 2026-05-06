@@ -48,3 +48,6 @@ catalogs:
 
 onlyBuiltDependencies:
   - esbuild
+minimumReleaseAgeExclude:
+  # Renovate security update: simple-git@3.36.0
+  - simple-git@3.36.0
