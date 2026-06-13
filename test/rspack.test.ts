@@ -1,19 +1,13 @@
 import { join } from "node:path";
 
-import type { Configuration, Stats } from "@rspack/core";
+import type { Configuration } from "@rspack/core";
 import { rspack as createRspack } from "@rspack/core";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
 
 import buildMeta from "../src/rspack";
 
-interface RspackResult {
-  stats: Stats;
-  json: ReturnType<Stats["toJson"]>;
-  file: string;
-}
-
-async function rspack(config: Configuration, testdirPath: string): Promise<RspackResult> {
+async function rspack(config: Configuration, testdirPath: string): Promise<null> {
   return new Promise((resolve, reject) => {
     const compiler = createRspack({
       mode: "none",
@@ -45,16 +39,12 @@ async function rspack(config: Configuration, testdirPath: string): Promise<Rspac
         return;
       }
 
-      const json = stats.toJson();
-      const files = json.assetsByChunkName?.main;
-      if (!files || !Array.isArray(files) || files[0] == null) {
-        reject(new Error("main chunk not found"));
+      if (stats.hasErrors()) {
+        reject(new Error(stats.toString("errors-only")));
         return;
       }
 
-      const file = files[0];
-
-      resolve({ stats, json, file });
+      resolve(null);
     });
   });
 }
@@ -64,7 +54,7 @@ describe("handles git metadata", () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/git"));
     expect(testdirPath).toBeDefined();
 
-    const { stats } = await rspack(
+    await rspack(
       {
         entry: join(testdirPath, "git.js"),
         plugins: [buildMeta()],
@@ -72,20 +62,19 @@ describe("handles git metadata", () => {
       testdirPath,
     );
 
-    const output = stats.toJson({ source: true }).modules?.[0]?.source;
-
-    expect(output).toBeDefined();
-
-    // verify import format for all git metadata
-    expect(output).toMatch(/import\s*\*\s*as\s+git\s+from\s+["']virtual:build-meta\/git["']/);
-    expect(output).toContain("console.log(git)");
+    const { git } = await import(join(testdirPath, "dist/bundle.js"));
+    expect(git).toBeDefined();
+    expect(git).toHaveProperty("branch");
+    expect(git).toHaveProperty("sha");
+    expect(git).toHaveProperty("shortSha");
+    expect(git).toHaveProperty("repositoryUrl");
   });
 
   it("expect specific git properties to be importable", async () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/git"));
     expect(testdirPath).toBeDefined();
 
-    const { stats } = await rspack(
+    await rspack(
       {
         entry: join(testdirPath, "git-specific.js"),
         plugins: [buildMeta()],
@@ -93,17 +82,10 @@ describe("handles git metadata", () => {
       testdirPath,
     );
 
-    const output = stats.toJson({ source: true }).modules?.[0]?.source;
-
-    expect(output).toBeDefined();
-
-    // verify named imports format
-    expect(output).toMatch(
-      /import\s*\{\s*branch,\s*sha,\s*shortSha\s*\}\s*from\s*["']virtual:build-meta\/git["']/,
-    );
-
-    // verify console.log with destructured properties
-    expect(output).toContain("console.log({ branch, sha, shortSha })");
+    const module = await import(join(testdirPath, "dist/bundle.js"));
+    expect(module.branch).toBeDefined();
+    expect(module.sha).toBeDefined();
+    expect(module.shortSha).toBeDefined();
   });
 });
 
@@ -112,7 +94,7 @@ describe("handles runtime metadata", () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/runtime"));
     expect(testdirPath).toBeDefined();
 
-    const { stats } = await rspack(
+    await rspack(
       {
         entry: join(testdirPath, "runtime.js"),
         plugins: [buildMeta()],
@@ -120,21 +102,18 @@ describe("handles runtime metadata", () => {
       testdirPath,
     );
 
-    const output = stats.toJson({ source: true }).modules?.[0]?.source;
-    expect(output).toBeDefined();
-
-    // verify import format for all runtime metadata
-    expect(output).toMatch(
-      /import\s*\*\s*as\s+runtime\s+from\s*["']virtual:build-meta\/runtime["']/,
-    );
-    expect(output).toContain("console.log(runtime)");
+    const { runtime } = await import(join(testdirPath, "dist/bundle.js"));
+    expect(runtime).toBeDefined();
+    expect(runtime).toHaveProperty("platform");
+    expect(runtime).toHaveProperty("arch");
+    expect(runtime).toHaveProperty("versions");
   });
 
   it("expect specific runtime properties to be importable", async () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/runtime"));
     expect(testdirPath).toBeDefined();
 
-    const { stats } = await rspack(
+    await rspack(
       {
         entry: join(testdirPath, "runtime-specific.js"),
         plugins: [buildMeta()],
@@ -142,15 +121,9 @@ describe("handles runtime metadata", () => {
       testdirPath,
     );
 
-    const output = stats.toJson({ source: true }).modules?.[0]?.source;
-    expect(output).toBeDefined();
-
-    // verify named imports format (order-independent)
-    expect(output).toMatch(
-      /import\s*\{\s*(?:[a-z]+,\s*){2}[a-z]+\s*\}\s*from\s*["']virtual:build-meta\/runtime["']/,
-    );
-
-    // verify console.log with destructured properties
-    expect(output).toContain("console.log({ platform, arch, versions })");
+    const module = await import(join(testdirPath, "dist/bundle.js"));
+    expect(module.platform).toBeDefined();
+    expect(module.arch).toBeDefined();
+    expect(module.versions).toBeDefined();
   });
 });

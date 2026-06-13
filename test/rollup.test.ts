@@ -63,8 +63,8 @@ describe("handles git metadata", () => {
     expect(code).toMatch(/const\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
     expect(code).toMatch(/const\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
 
-    // verify console.log with destructured properties
-    expect(code).toContain("console.log({ branch, sha, shortSha })");
+    // verify selected properties are exported
+    expect(code).toContain("export { branch, sha, shortSha }");
   });
 });
 
@@ -120,7 +120,7 @@ describe("handles runtime metadata", () => {
     expect(code).toMatch(/const\s+arch\s*=\s*["'][^"']+["']/);
     expect(code).toMatch(/const\s+versions\s*=\s*\{/);
 
-    // verify console.log with destructured properties
-    expect(code).toContain("console.log({ platform, arch, versions })");
+    // verify selected properties are exported
+    expect(code).toContain("export { arch, platform, versions }");
   });
 });

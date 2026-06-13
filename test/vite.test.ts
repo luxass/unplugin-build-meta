@@ -91,8 +91,8 @@ describe("handles git metadata", () => {
     expect(code).toMatch(/sha\s*[:=]\s*["'][a-f0-9]{40}["']/);
     expect(code).toMatch(/shortSha\s*[:=]\s*["'][a-f0-9]{10}["']/);
 
-    // verify the specific import use site is still present
-    expect(code).toContain("console.log({");
+    // verify selected properties are exported
+    expect(code).toContain("export { branch, sha, shortSha }");
   });
 });
 
@@ -182,7 +182,7 @@ describe("handles runtime metadata", () => {
     expect(code).toMatch(/arch\s*[:=]\s*["'][^"']+["']/);
     expect(code).toMatch(/versions\s*[:=]\s*\{/);
 
-    // verify the specific import use site is still present
-    expect(code).toContain("console.log({");
+    // verify selected properties are exported
+    expect(code).toContain("export { arch, platform, versions }");
   });
 });

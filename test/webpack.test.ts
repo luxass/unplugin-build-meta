@@ -86,7 +86,7 @@ describe("handles git metadata", () => {
 
     // verify import format for all git metadata
     expect(output).toMatch(/import\s*\*\s*as\s+git\s+from\s*["']virtual:build-meta\/git["']/);
-    expect(output).toContain("console.log(git)");
+    expect(output).toContain("export { git }");
   });
 
   it("expect specific git properties to be importable", async () => {
@@ -109,8 +109,8 @@ describe("handles git metadata", () => {
       /import\s*\{\s*branch,\s*sha,\s*shortSha\s*\}\s*from\s*["']virtual:build-meta\/git["']/,
     );
 
-    // verify console.log with destructured properties
-    expect(output).toContain("console.log({ branch, sha, shortSha })");
+    // verify selected properties are exported
+    expect(output).toContain("export { branch, sha, shortSha }");
   });
 });
 
@@ -134,7 +134,7 @@ describe("handles runtime metadata", () => {
     expect(output).toMatch(
       /import\s*\*\s*as\s+runtime\s+from\s*["']virtual:build-meta\/runtime["']/,
     );
-    expect(output).toContain("console.log(runtime)");
+    expect(output).toContain("export { runtime }");
   });
 
   it("expect specific runtime properties to be importable", async () => {
@@ -157,7 +157,7 @@ describe("handles runtime metadata", () => {
       /import\s*\{\s*arch,\s*platform,\s*versions\s*\}\s*from\s*["']virtual:build-meta\/runtime["']/,
     );
 
-    // verify console.log with destructured properties
-    expect(output).toContain("console.log({ platform, arch, versions })");
+    // verify selected properties are exported
+    expect(output).toContain("export { arch, platform, versions }");
   });
 });

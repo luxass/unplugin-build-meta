@@ -66,7 +66,7 @@ describe("handles git metadata", () => {
     expect(code).toMatch(/sha\s*[:=]\s*["'][a-f0-9]{40}["']/);
     expect(code).toMatch(/shortSha\s*[:=]\s*["'][a-f0-9]{10}["']/);
 
-    // check for the call site that consumes the selected properties
-    expect(code).toContain("console.log({");
+    // verify selected properties are exported
+    expect(code).toContain("export { branch, sha, shortSha }");
   });
 });
