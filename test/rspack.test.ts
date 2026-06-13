@@ -30,7 +30,9 @@ async function rspack(config: Configuration, testdirPath: string): Promise<null>
         ...(rspackMajor >= 2 ? { bundlerInfo: { force: false } } : {}),
       },
       // In v1.x, bundlerInfo lived under experiments.rspackFuture
-      ...(rspackMajor < 2 ? ({ experiments: { rspackFuture: { bundlerInfo: { force: false } } } } as object) : {}),
+      ...(rspackMajor < 2
+        ? ({ experiments: { rspackFuture: { bundlerInfo: { force: false } } } } as object)
+        : {}),
       target: ["es2020"],
       ...config,
     });
