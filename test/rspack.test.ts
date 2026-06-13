@@ -29,8 +29,8 @@ async function rspack(config: Configuration, testdirPath: string): Promise<null>
         // bundlerInfo was promoted from experiments to output in v2.x
         ...(rspackMajor >= 2 ? { bundlerInfo: { force: false } } : {}),
       },
-      // In v1.x, bundlerInfo lived under experiments
-      ...(rspackMajor < 2 ? ({ experiments: { bundlerInfo: { force: false } } } as object) : {}),
+      // In v1.x, bundlerInfo lived under experiments.rspackFuture
+      ...(rspackMajor < 2 ? ({ experiments: { rspackFuture: { bundlerInfo: { force: false } } } } as object) : {}),
       target: ["es2020"],
       ...config,
     });
