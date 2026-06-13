@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+permissions: {}
+
+jobs:
+  lint:
+    permissions:
+      contents: read
+    uses: luxass/shared-workflows/.github/workflows/reusable-ci.yaml@70000dc85b43fa0b5e18a731330b7f95f4e1a7fc # v0.9.0
+    with:
+      build-script: "build"
+      lint-script: "lint"
+      fmt: true
+      fmt-script: "fmt:check"
+      typecheck-script: "typecheck"
+
+  test:
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        node: [22, 24]
+      fail-fast: false
+    uses: luxass/shared-workflows/.github/workflows/reusable-test.yaml@70000dc85b43fa0b5e18a731330b7f95f4e1a7fc # v0.9.0
+    with:
+      node-version: ${{ matrix.node }}

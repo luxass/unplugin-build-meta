@@ -1,0 +1,18 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions: {}
+
+jobs:
+  release:
+    permissions:
+      id-token: write
+      contents: write
+    uses: luxass/shared-workflows/.github/workflows/reusable-release-npm.yaml@70000dc85b43fa0b5e18a731330b7f95f4e1a7fc # v0.9.0
+    with:
+      environment: npm-registry
+      stage: true
