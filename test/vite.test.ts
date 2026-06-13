@@ -91,8 +91,9 @@ describe("handles git metadata", () => {
     expect(code).toMatch(/sha\s*[:=]\s*["'][a-f0-9]{40}["']/);
     expect(code).toMatch(/shortSha\s*[:=]\s*["'][a-f0-9]{10}["']/);
 
-    // verify selected properties are exported
-    expect(code).toContain("export { branch, sha, shortSha }");
+    // verify only the selected properties are exported — strict equality catches accidental injections
+    const gitSpecificMod = await import(join(testdirPath, "dist", "bundle.js"));
+    expect(Object.keys(gitSpecificMod)).toEqual(["branch", "sha", "shortSha"]);
   });
 });
 
@@ -182,7 +183,8 @@ describe("handles runtime metadata", () => {
     expect(code).toMatch(/arch\s*[:=]\s*["'][^"']+["']/);
     expect(code).toMatch(/versions\s*[:=]\s*\{/);
 
-    // verify selected properties are exported
-    expect(code).toContain("export { arch, platform, versions }");
+    // verify only the selected properties are exported — strict equality catches accidental injections
+    const runtimeSpecificMod = await import(join(testdirPath, "dist", "bundle.js"));
+    expect(Object.keys(runtimeSpecificMod)).toEqual(["arch", "platform", "versions"]);
   });
 });
