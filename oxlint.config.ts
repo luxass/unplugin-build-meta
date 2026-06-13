@@ -35,5 +35,11 @@ export default defineConfig({
         "typescript/no-unsafe-member-access": "off",
       },
     },
+    {
+      files: ["test/fixtures/**/*"],
+      rules: {
+        "no-console": "off",
+      },
+    },
   ],
 });

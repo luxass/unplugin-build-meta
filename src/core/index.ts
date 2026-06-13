@@ -33,10 +33,10 @@ export const unpluginFactory: UnpluginFactory<BuildMetaOptions | undefined> = (o
     name: PLUGIN_NAME,
     enforce: "pre",
     resolveId(id) {
-      if (!id.startsWith(PREFIX)) return;
+      if (!id.startsWith(PREFIX)) return null;
       id = id.slice(PREFIX.length);
       if (!modules.map((m) => m.name).includes(id)) {
-        return;
+        return null;
       }
 
       return `${PREFIX_WITH_NULL}${id}`;
@@ -46,7 +46,7 @@ export const unpluginFactory: UnpluginFactory<BuildMetaOptions | undefined> = (o
       return modules.map((m) => m.name).includes(id.slice(PREFIX_WITH_NULL.length));
     },
     async load(id) {
-      if (!id.startsWith(PREFIX_WITH_NULL)) return;
+      if (!id.startsWith(PREFIX_WITH_NULL)) return null;
       id = id.slice(PREFIX_WITH_NULL.length);
 
       for (const mod of Object.values(modules)) {
@@ -54,6 +54,8 @@ export const unpluginFactory: UnpluginFactory<BuildMetaOptions | undefined> = (o
           return mod.load(this, id);
         }
       }
+
+      return null;
     },
   };
 };
@@ -61,6 +63,6 @@ export const unpluginFactory: UnpluginFactory<BuildMetaOptions | undefined> = (o
 /**
  * The main unplugin instance.
  */
-export const unplugin: UnpluginInstance<BuildMetaOptions | undefined, boolean> = /* #__PURE__ */ createUnplugin(unpluginFactory);
+export const unplugin: UnpluginInstance<BuildMetaOptions | undefined> = /* #__PURE__ */ createUnplugin(unpluginFactory);
 
 export default unplugin;

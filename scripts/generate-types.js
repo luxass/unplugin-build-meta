@@ -2,14 +2,14 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const GIT_INTERFACE_REGEX = /interface\s+GitRepositoryInfo\s*\{([^}]+)\}/;
 const RUNTIME_INTERFACE_REGEX = /interface\s+RuntimeInfo\s*\{([^}]+)\}/;
 // eslint-disable-next-line regexp/no-super-linear-backtracking
 const PROPERTY_REGEX = /^\s*(\w+)\??:\s*([^;/]+);?\s*(\/\/.*)?$/;
 
 async function extractGitModuleType() {
-  const gitModulePath = path.resolve(__dirname, "../src/core/modules/git.ts");
+  const gitModulePath = path.resolve(scriptDir, "../src/core/modules/git.ts");
   const content = await fs.readFile(gitModulePath, "utf-8");
 
   // Extract the GitRepositoryInfo interface using regex
@@ -40,7 +40,7 @@ async function extractGitModuleType() {
 }
 
 async function extractRuntimeModuleType() {
-  const runtimeModulePath = path.resolve(__dirname, "../src/core/modules/runtime.ts");
+  const runtimeModulePath = path.resolve(scriptDir, "../src/core/modules/runtime.ts");
   const content = await fs.readFile(runtimeModulePath, "utf-8");
 
   // Extract the GitRepositoryInfo interface using regex
@@ -75,7 +75,7 @@ async function generateGitModuleTypings() {
     const gitInfoTypes = await extractGitModuleType();
     const runtimeInfoTypes = await extractRuntimeModuleType();
 
-    const typesDir = path.resolve(__dirname, "../types");
+    const typesDir = path.resolve(scriptDir, "../types");
     await fs.mkdir(typesDir, { recursive: true });
 
     // Generate the d.ts content
@@ -85,7 +85,7 @@ async function generateGitModuleTypings() {
 
 declare module 'virtual:build-meta/${name}' {
   ${Object.entries(types)
-    .map(([key, type]) => `declare const ${key}: ${type};`)
+    .map(([key, type]) => `export const ${key}: ${type};`)
     .join("\n  ")}
 }
       `;
@@ -94,8 +94,8 @@ declare module 'virtual:build-meta/${name}' {
       await fs.writeFile(path.join(typesDir, `${name}.d.ts`), content, "utf-8");
     }
 
-    writeModuleTypes("git", gitInfoTypes);
-    writeModuleTypes("runtime", runtimeInfoTypes);
+    await writeModuleTypes("git", gitInfoTypes);
+    await writeModuleTypes("runtime", runtimeInfoTypes);
 
     // Create or update the index.d.ts file that re-exports all types
     const indexContent = `// Auto-generated type definitions for unplugin-build-meta
@@ -114,4 +114,7 @@ import './runtime';
 }
 
 // Execute the function
-generateGitModuleTypings();
+generateGitModuleTypings().catch((error) => {
+  console.error("Error generating git module type definitions:", error);
+  process.exitCode = 1;
+});

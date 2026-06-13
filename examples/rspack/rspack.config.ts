@@ -1,6 +1,6 @@
 import { defineConfig } from "@rspack/cli";
 import { rspack } from "@rspack/core";
-import * as RefreshPlugin from "@rspack/plugin-react-refresh";
+import { ReactRefreshRspackPlugin } from "@rspack/plugin-react-refresh";
 import buildMeta from "unplugin-build-meta/rspack";
 
 // eslint-disable-next-line node/prefer-global/process
@@ -54,7 +54,7 @@ export default defineConfig({
     new rspack.HtmlRspackPlugin({
       template: "./index.html",
     }),
-    isDev ? new RefreshPlugin() : null,
+    isDev ? new ReactRefreshRspackPlugin() : null,
   ].filter(Boolean),
   optimization: {
     minimizer: [

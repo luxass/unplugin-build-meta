@@ -21,17 +21,15 @@ async function rspack(config: Configuration, testdirPath: string): Promise<Rspac
       output: {
         path: join(testdirPath, "dist"),
         filename: "bundle.js",
-        libraryTarget: "module",
-      },
-      target: ["es2020"],
-      experiments: {
-        outputModule: true,
-        rspackFuture: {
-          bundlerInfo: {
-            force: false,
-          },
+        library: {
+          type: "module",
+        },
+        module: true,
+        bundlerInfo: {
+          force: false,
         },
       },
+      target: ["es2020"],
       ...config,
     });
 

@@ -2,8 +2,8 @@
       // Do not edit manually!
 
 declare module 'virtual:build-meta/runtime' {
-  declare const platform: NodeJS.Platform;
-  declare const arch: NodeJS.Architecture;
-  declare const versions: NodeJS.ProcessVersions;
+  export const platform: NodeJS.Platform;
+  export const arch: NodeJS.Architecture;
+  export const versions: NodeJS.ProcessVersions;
 }
       
