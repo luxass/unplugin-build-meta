@@ -1,3 +1,4 @@
+import { createRequire } from "node:module";
 import { join } from "node:path";
 
 import type { Configuration } from "@rspack/core";
@@ -6,6 +7,10 @@ import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
 
 import buildMeta from "../src/rspack";
+
+const require = createRequire(import.meta.url);
+const { version: rspackVersion } = require("@rspack/core/package.json") as { version: string };
+const rspackMajor = Number(rspackVersion.split(".")[0]);
 
 async function rspack(config: Configuration, testdirPath: string): Promise<null> {
   return new Promise((resolve, reject) => {
@@ -21,10 +26,11 @@ async function rspack(config: Configuration, testdirPath: string): Promise<null>
           type: "module",
         },
         module: true,
-        bundlerInfo: {
-          force: false,
-        },
+        // bundlerInfo was promoted from experiments to output in v2.x
+        ...(rspackMajor >= 2 ? { bundlerInfo: { force: false } } : {}),
       },
+      // In v1.x, bundlerInfo lived under experiments
+      ...(rspackMajor < 2 ? ({ experiments: { bundlerInfo: { force: false } } } as object) : {}),
       target: ["es2020"],
       ...config,
     });
