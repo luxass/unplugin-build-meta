@@ -1,8 +1,10 @@
-import type { Configuration, Stats } from "webpack";
 import { join } from "node:path";
+
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
+import type { Configuration, Stats } from "webpack";
 import { webpack as createWebpack } from "webpack";
+
 import buildMeta from "../src/webpack";
 
 interface WebpackResult {
@@ -12,7 +14,9 @@ interface WebpackResult {
 }
 
 function getFirstModuleSource(stats: Stats): string | undefined {
-  const module = stats.toJson({ source: true }).modules?.find((module) => typeof module.source === "string" && module.source.length > 0);
+  const module = stats
+    .toJson({ source: true })
+    .modules?.find((module) => typeof module.source === "string" && module.source.length > 0);
   return typeof module?.source === "string" ? module.source : undefined;
 }
 
@@ -69,10 +73,13 @@ describe("handles git metadata", () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/git"));
     expect(testdirPath).toBeDefined();
 
-    const { stats } = await webpack({
-      entry: join(testdirPath, "git.js"),
-      plugins: [buildMeta()],
-    }, testdirPath);
+    const { stats } = await webpack(
+      {
+        entry: join(testdirPath, "git.js"),
+        plugins: [buildMeta()],
+      },
+      testdirPath,
+    );
 
     const output = getFirstModuleSource(stats);
     expect(output).toBeDefined();
@@ -86,16 +93,21 @@ describe("handles git metadata", () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/git"));
     expect(testdirPath).toBeDefined();
 
-    const { stats } = await webpack({
-      entry: join(testdirPath, "git-specific.js"),
-      plugins: [buildMeta()],
-    }, testdirPath);
+    const { stats } = await webpack(
+      {
+        entry: join(testdirPath, "git-specific.js"),
+        plugins: [buildMeta()],
+      },
+      testdirPath,
+    );
 
     const output = getFirstModuleSource(stats);
     expect(output).toBeDefined();
 
     // verify named imports format
-    expect(output).toMatch(/import\s*\{\s*branch,\s*sha,\s*shortSha\s*\}\s*from\s*["']virtual:build-meta\/git["']/);
+    expect(output).toMatch(
+      /import\s*\{\s*branch,\s*sha,\s*shortSha\s*\}\s*from\s*["']virtual:build-meta\/git["']/,
+    );
 
     // verify console.log with destructured properties
     expect(output).toContain("console.log({ branch, sha, shortSha })");
@@ -107,16 +119,21 @@ describe("handles runtime metadata", () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/runtime"));
     expect(testdirPath).toBeDefined();
 
-    const { stats } = await webpack({
-      entry: join(testdirPath, "runtime.js"),
-      plugins: [buildMeta()],
-    }, testdirPath);
+    const { stats } = await webpack(
+      {
+        entry: join(testdirPath, "runtime.js"),
+        plugins: [buildMeta()],
+      },
+      testdirPath,
+    );
 
     const output = getFirstModuleSource(stats);
     expect(output).toBeDefined();
 
     // verify import format for all runtime metadata
-    expect(output).toMatch(/import\s*\*\s*as\s+runtime\s+from\s*["']virtual:build-meta\/runtime["']/);
+    expect(output).toMatch(
+      /import\s*\*\s*as\s+runtime\s+from\s*["']virtual:build-meta\/runtime["']/,
+    );
     expect(output).toContain("console.log(runtime)");
   });
 
@@ -124,16 +141,21 @@ describe("handles runtime metadata", () => {
     const testdirPath = await testdir.from(join(import.meta.dirname, "fixtures/runtime"));
     expect(testdirPath).toBeDefined();
 
-    const { stats } = await webpack({
-      entry: join(testdirPath, "runtime-specific.js"),
-      plugins: [buildMeta()],
-    }, testdirPath);
+    const { stats } = await webpack(
+      {
+        entry: join(testdirPath, "runtime-specific.js"),
+        plugins: [buildMeta()],
+      },
+      testdirPath,
+    );
 
     const output = getFirstModuleSource(stats);
     expect(output).toBeDefined();
 
     // verify named imports format
-    expect(output).toMatch(/import\s*\{\s*arch,\s*platform,\s*versions\s*\}\s*from\s*["']virtual:build-meta\/runtime["']/);
+    expect(output).toMatch(
+      /import\s*\{\s*arch,\s*platform,\s*versions\s*\}\s*from\s*["']virtual:build-meta\/runtime["']/,
+    );
 
     // verify console.log with destructured properties
     expect(output).toContain("console.log({ platform, arch, versions })");

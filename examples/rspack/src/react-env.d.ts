@@ -1,5 +1,7 @@
 // CSS modules
-interface CSSModuleClasses { readonly [key: string]: string }
+interface CSSModuleClasses {
+  readonly [key: string]: string;
+}
 
 declare module "*.module.css" {
   const classes: CSSModuleClasses;

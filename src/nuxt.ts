@@ -1,6 +1,7 @@
-import type { NuxtModule } from "@nuxt/schema";
-import type { BuildMetaOptions } from "./";
 import { addVitePlugin, addWebpackPlugin, defineNuxtModule } from "@nuxt/kit";
+import type { NuxtModule } from "@nuxt/schema";
+
+import type { BuildMetaOptions } from "./";
 import { NUXT_CONFIG_KEY, PLUGIN_NAME } from "./core/constants";
 import vite from "./vite";
 import webpack from "./webpack";

@@ -30,7 +30,9 @@ import buildMeta from "unplugin-build-meta/vite";
 
 export default defineConfig({
   plugins: [
-    buildMeta({ /* options */ }),
+    buildMeta({
+      /* options */
+    }),
   ],
 });
 ```
@@ -46,7 +48,9 @@ import buildMeta from "unplugin-build-meta/rollup";
 
 export default {
   plugins: [
-    buildMeta({ /* options */ }),
+    buildMeta({
+      /* options */
+    }),
   ],
 };
 ```
@@ -61,7 +65,9 @@ export default {
 module.exports = {
   /* ... */
   plugins: [
-    require("unplugin-build-meta/webpack").default({ /* options */ }),
+    require("unplugin-build-meta/webpack").default({
+      /* options */
+    }),
   ],
 };
 ```
@@ -75,7 +81,12 @@ module.exports = {
 // nuxt.config.js
 export default defineNuxtConfig({
   modules: [
-    ["unplugin-build-meta/nuxt", { /* options */ }]
+    [
+      "unplugin-build-meta/nuxt",
+      {
+        /* options */
+      },
+    ],
   ],
 });
 ```
@@ -95,8 +106,8 @@ export default defineConfig({
   integrations: [
     buildMeta({
       /* options */
-    })
-  ]
+    }),
+  ],
 });
 ```
 
@@ -134,9 +145,9 @@ import buildMeta from "unplugin-build-meta/rspack";
 export default {
   plugins: [
     new rspack.HtmlRspackPlugin({
-      template: "./index.html"
+      template: "./index.html",
     }),
-    buildMeta()
+    buildMeta(),
   ],
 };
 ```
@@ -173,11 +184,12 @@ buildMeta({
   // Additional custom modules to include
   extraModules: [
     // Your custom modules here
-  ]
+  ],
 });
 ```
 
 By default, the git module is enabled. You can:
+
 - Disable the git module by setting `git: false`
 - Add custom modules using the `extraModules` array
 - Create custom modules using `defineBuildMetaModule`
@@ -200,22 +212,22 @@ import { branch, sha, shortSha } from "virtual:build-meta/git";
 
 Available properties (all properties are nullable):
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `branch` | `string \| null` | Current git branch name |
-| `sha` | `string \| null` | Full git commit hash |
-| `shortSha` | `string \| null` | First 10 characters of the commit hash |
-| `latestCommitMessage` | `string \| null` | Latest commit message |
-| `commitAuthorName` | `string \| null` | Commit author name |
-| `commitAuthorEmail` | `string \| null` | Commit author email |
-| `commitAuthorDate` | `string \| null` | Commit author date |
-| `commitCommitterName` | `string \| null` | Committer name |
-| `commitCommitterEmail` | `string \| null` | Committer email |
-| `commitCommitterDate` | `string \| null` | Committer date |
-| `tag` | `string \| null` | Current tag (if any) |
-| `tags` | `string[] \| null` | All tags pointing at current commit |
-| `lastTag` | `string \| null` | Latest tag in the repository |
-| `repositoryUrl` | `string \| null` | Repository URL (for GitHub repositories) |
+| Property               | Type               | Description                              |
+| ---------------------- | ------------------ | ---------------------------------------- |
+| `branch`               | `string \| null`   | Current git branch name                  |
+| `sha`                  | `string \| null`   | Full git commit hash                     |
+| `shortSha`             | `string \| null`   | First 10 characters of the commit hash   |
+| `latestCommitMessage`  | `string \| null`   | Latest commit message                    |
+| `commitAuthorName`     | `string \| null`   | Commit author name                       |
+| `commitAuthorEmail`    | `string \| null`   | Commit author email                      |
+| `commitAuthorDate`     | `string \| null`   | Commit author date                       |
+| `commitCommitterName`  | `string \| null`   | Committer name                           |
+| `commitCommitterEmail` | `string \| null`   | Committer email                          |
+| `commitCommitterDate`  | `string \| null`   | Committer date                           |
+| `tag`                  | `string \| null`   | Current tag (if any)                     |
+| `tags`                 | `string[] \| null` | All tags pointing at current commit      |
+| `lastTag`              | `string \| null`   | Latest tag in the repository             |
+| `repositoryUrl`        | `string \| null`   | Repository URL (for GitHub repositories) |
 
 ### Runtime Module
 
@@ -233,11 +245,11 @@ import { arch, platform, versions } from "virtual:build-meta/runtime";
 
 Available properties:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `platform` | `NodeJS.Platform` | The operating system platform (e.g., 'linux', 'darwin', 'win32') |
-| `arch` | `NodeJS.Architecture` | The CPU architecture (e.g., 'x64', 'arm64') |
-| `versions` | `NodeJS.ProcessVersions` | Version strings of Node.js and its dependencies |
+| Property   | Type                     | Description                                                      |
+| ---------- | ------------------------ | ---------------------------------------------------------------- |
+| `platform` | `NodeJS.Platform`        | The operating system platform (e.g., 'linux', 'darwin', 'win32') |
+| `arch`     | `NodeJS.Architecture`    | The CPU architecture (e.g., 'x64', 'arm64')                      |
+| `versions` | `NodeJS.ProcessVersions` | Version strings of Node.js and its dependencies                  |
 
 ### TypeScript
 
@@ -246,9 +258,7 @@ To get proper type support, make sure to include the type declarations:
 ```json
 {
   "compilerOptions": {
-    "types": [
-      "unplugin-build-meta/types"
-    ]
+    "types": ["unplugin-build-meta/types"]
   }
 }
 ```

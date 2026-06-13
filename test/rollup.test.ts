@@ -1,7 +1,9 @@
 import { join } from "node:path";
+
 import { rollup } from "rollup";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
+
 import buildMeta from "../src/rollup";
 
 describe("handles git metadata", () => {

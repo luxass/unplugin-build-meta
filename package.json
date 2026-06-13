@@ -3,38 +3,42 @@
   "name": "unplugin-build-meta",
   "version": "2.1.0",
   "description": "Provide build metadata as a virutal module",
-  "type": "module",
+  "keywords": [
+    "astro",
+    "build-meta",
+    "esbuild",
+    "git",
+    "nuxt",
+    "rolldown",
+    "rolldown-plugin",
+    "rollup",
+    "rollup-plugin",
+    "sha",
+    "unplugin",
+    "vite",
+    "vite-plugin",
+    "webpack"
+  ],
+  "bugs": "https://github.com/luxass/unplugin-build-meta/issues",
+  "license": "MIT",
   "author": {
     "name": "Lucas Nørgård",
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
-  "packageManager": "pnpm@11.5.2",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luxass/unplugin-build-meta.git"
   },
-  "bugs": "https://github.com/luxass/unplugin-build-meta/issues",
-  "keywords": [
-    "build-meta",
-    "git",
-    "sha",
-    "unplugin",
-    "vite",
-    "vite-plugin",
-    "webpack",
-    "rollup",
-    "rollup-plugin",
-    "rolldown",
-    "rolldown-plugin",
-    "esbuild",
-    "nuxt",
-    "astro"
-  ],
   "workspaces": [
     "playground/*"
   ],
+  "files": [
+    "dist",
+    "types"
+  ],
+  "type": "module",
+  "types": "./dist/index.d.mts",
   "exports": {
     ".": "./dist/index.mjs",
     "./astro": "./dist/astro.mjs",
@@ -54,11 +58,6 @@
     },
     "./package.json": "./package.json"
   },
-  "types": "./dist/index.d.mts",
-  "files": [
-    "dist",
-    "types"
-  ],
   "scripts": {
     "prepack": "pnpm run generate-types",
     "build": "tsdown",
@@ -73,6 +72,30 @@
     "play:vite": "pnpm run --filter @unplugin-build-meta/vite dev",
     "play:rspack": "pnpm run --filter @unplugin-build-meta/rspack dev",
     "generate-types": "node scripts/generate-types.js"
+  },
+  "dependencies": {
+    "git-url-parse": "catalog:prod",
+    "simple-git": "catalog:prod",
+    "unplugin": "catalog:prod"
+  },
+  "devDependencies": {
+    "@nuxt/kit": "catalog:dev",
+    "@nuxt/schema": "catalog:dev",
+    "@rspack/core": "catalog:dev",
+    "@types/node": "catalog:dev",
+    "esbuild": "catalog:dev",
+    "oxfmt": "catalog:dev",
+    "oxlint": "catalog:dev",
+    "oxlint-tsgolint": "catalog:dev",
+    "publint": "catalog:dev",
+    "rolldown": "catalog:dev",
+    "rollup": "catalog:dev",
+    "tsdown": "catalog:dev",
+    "typescript": "catalog:dev",
+    "vite": "catalog:dev",
+    "vitest": "catalog:dev",
+    "vitest-testdirs": "catalog:dev",
+    "webpack": "catalog:dev"
   },
   "peerDependencies": {
     "@nuxt/kit": "^3.0.0 || ^4.0.0",
@@ -114,28 +137,5 @@
       "optional": true
     }
   },
-  "dependencies": {
-    "git-url-parse": "catalog:prod",
-    "simple-git": "catalog:prod",
-    "unplugin": "catalog:prod"
-  },
-  "devDependencies": {
-    "@nuxt/kit": "catalog:dev",
-    "@nuxt/schema": "catalog:dev",
-    "@rspack/core": "catalog:dev",
-    "@types/node": "catalog:dev",
-    "esbuild": "catalog:dev",
-    "oxfmt": "catalog:dev",
-    "oxlint": "catalog:dev",
-    "oxlint-tsgolint": "catalog:dev",
-    "publint": "catalog:dev",
-    "rolldown": "catalog:dev",
-    "rollup": "catalog:dev",
-    "tsdown": "catalog:dev",
-    "typescript": "catalog:dev",
-    "vite": "catalog:dev",
-    "vitest": "catalog:dev",
-    "vitest-testdirs": "catalog:dev",
-    "webpack": "catalog:dev"
-  }
+  "packageManager": "pnpm@11.5.2"
 }

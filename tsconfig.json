@@ -1,15 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": [
-      "ES2022"
-    ],
+    "lib": ["ES2022"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "declaration": true,
@@ -19,9 +15,5 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
-  "exclude": [
-    "**/node_modules/**",
-    "**/examples/**",
-    "**/dist/**"
-  ]
+  "exclude": ["**/node_modules/**", "**/examples/**", "**/dist/**"]
 }

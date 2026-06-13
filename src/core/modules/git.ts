@@ -1,6 +1,7 @@
-import type { SimpleGit } from "simple-git";
 import parseGitUrl from "git-url-parse";
+import type { SimpleGit } from "simple-git";
 import { simpleGit } from "simple-git";
+
 import { defineBuildMetaModule } from "../../module";
 
 interface GitRepositoryInfo {
@@ -44,9 +45,12 @@ export default defineBuildMetaModule({
         "latestCommitMessage",
       ];
 
-      return keys.map((key) =>
-        `export const ${key} = ${data && data[key] !== undefined ? JSON.stringify(data[key]) : "null"}`,
-      ).join("\n");
+      return keys
+        .map(
+          (key) =>
+            `export const ${key} = ${data && data[key] !== undefined ? JSON.stringify(data[key]) : "null"}`,
+        )
+        .join("\n");
     }
 
     // skip all operations if not a git repo

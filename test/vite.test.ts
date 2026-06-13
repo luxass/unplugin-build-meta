@@ -1,7 +1,9 @@
 import { join } from "node:path";
+
 import { build } from "vite";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
+
 import buildMeta from "../src/vite";
 
 describe("handles git metadata", () => {
@@ -130,9 +132,15 @@ describe("handles runtime metadata", () => {
     const code = firstResult?.output[0].code;
 
     // Vite/Rolldown may emit either direct assignments or getter-based namespace exports.
-    expect(code).toMatch(/(?:platform\s*:\s*\(\)\s*=>\s*(?:platform|["'][^"']+["'])|(?:const|var)\s+platform\s*=\s*["'][^"']+["'])/);
-    expect(code).toMatch(/(?:arch\s*:\s*\(\)\s*=>\s*(?:arch|["'][^"']+["'])|(?:const|var)\s+arch\s*=\s*["'][^"']+["'])/);
-    expect(code).toMatch(/(?:versions\s*:\s*\(\)\s*=>\s*versions|(?:const|var)\s+versions\s*=\s*\{)/);
+    expect(code).toMatch(
+      /(?:platform\s*:\s*\(\)\s*=>\s*(?:platform|["'][^"']+["'])|(?:const|var)\s+platform\s*=\s*["'][^"']+["'])/,
+    );
+    expect(code).toMatch(
+      /(?:arch\s*:\s*\(\)\s*=>\s*(?:arch|["'][^"']+["'])|(?:const|var)\s+arch\s*=\s*["'][^"']+["'])/,
+    );
+    expect(code).toMatch(
+      /(?:versions\s*:\s*\(\)\s*=>\s*versions|(?:const|var)\s+versions\s*=\s*\{)/,
+    );
   });
 
   it("expect specific runtime properties to be importable", async () => {

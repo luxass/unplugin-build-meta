@@ -7,11 +7,8 @@ function App() {
         <section className="welcome-section">
           <h1 className="heading">Build Meta Example</h1>
           <p className="text-muted">
-            A simple demonstration of using
-            {" "}
-            <code>unplugin-build-meta</code>
-            {" "}
-            to display Git repository information.
+            A simple demonstration of using <code>unplugin-build-meta</code> to display Git
+            repository information.
           </p>
         </section>
 
@@ -39,11 +36,7 @@ function App() {
               <div className="git-label">Latest Commit</div>
               <div className="git-value">{git.shortSha || "Not available"}</div>
               {git.latestCommitMessage && (
-                <div className="git-commit-message">
-                  "
-                  {git.latestCommitMessage}
-                  "
-                </div>
+                <div className="git-commit-message">"{git.latestCommitMessage}"</div>
               )}
             </div>
 
@@ -52,12 +45,12 @@ function App() {
                 <div className="git-label">Author</div>
                 <div className="git-value">
                   {git.commitAuthorName}
-                  {git.commitAuthorEmail && <span className="git-email">{git.commitAuthorEmail}</span>}
+                  {git.commitAuthorEmail && (
+                    <span className="git-email">{git.commitAuthorEmail}</span>
+                  )}
                   {git.commitAuthorDate && (
                     <span className="git-date">
-                      on
-                      {" "}
-                      {new Date(git.commitAuthorDate).toLocaleDateString()}
+                      on {new Date(git.commitAuthorDate).toLocaleDateString()}
                     </span>
                   )}
                 </div>
@@ -82,9 +75,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p className="text-xs text-muted">
-          Built with unplugin-build-meta
-        </p>
+        <p className="text-xs text-muted">Built with unplugin-build-meta</p>
       </footer>
     </div>
   );

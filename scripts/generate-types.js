@@ -81,14 +81,14 @@ async function generateGitModuleTypings() {
     // Generate the d.ts content
     async function writeModuleTypes(name, types) {
       const content = `// Auto-generated type definitions for unplugin-build-meta git module
-      // Do not edit manually!
+// Do not edit manually!
 
-declare module 'virtual:build-meta/${name}' {
+declare module "virtual:build-meta/${name}" {
   ${Object.entries(types)
     .map(([key, type]) => `export const ${key}: ${type};`)
     .join("\n  ")}
 }
-      `;
+`;
 
       // write the d.ts file
       await fs.writeFile(path.join(typesDir, `${name}.d.ts`), content, "utf-8");
@@ -101,8 +101,8 @@ declare module 'virtual:build-meta/${name}' {
     const indexContent = `// Auto-generated type definitions for unplugin-build-meta
 // Do not edit manually!
 
-import './git';
-import './runtime';
+import "./git";
+import "./runtime";
 `;
 
     await fs.writeFile(path.join(typesDir, "index.d.ts"), indexContent, "utf-8");

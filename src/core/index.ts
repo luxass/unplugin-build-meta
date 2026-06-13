@@ -1,9 +1,10 @@
 import type { UnpluginFactory, UnpluginInstance } from "unplugin";
-import type { BuildMetaModule, BuildMetaOptions } from "./types";
 import { createUnplugin } from "unplugin";
+
 import { PLUGIN_NAME } from "./constants";
 import gitModule from "./modules/git";
 import { runtimeModule } from "./modules/runtime";
+import type { BuildMetaModule, BuildMetaOptions } from "./types";
 
 export type { BuildMetaOptions };
 
@@ -63,6 +64,7 @@ export const unpluginFactory: UnpluginFactory<BuildMetaOptions | undefined> = (o
 /**
  * The main unplugin instance.
  */
-export const unplugin: UnpluginInstance<BuildMetaOptions | undefined> = /* #__PURE__ */ createUnplugin(unpluginFactory);
+export const unplugin: UnpluginInstance<BuildMetaOptions | undefined> =
+  /* #__PURE__ */ createUnplugin(unpluginFactory);
 
 export default unplugin;

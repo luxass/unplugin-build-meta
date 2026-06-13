@@ -1,5 +1,6 @@
-import type { BuildMetaModule } from "../types";
 import process from "node:process";
+
+import type { BuildMetaModule } from "../types";
 
 interface RuntimeInfo {
   platform: NodeJS.Platform;

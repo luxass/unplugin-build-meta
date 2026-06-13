@@ -1,7 +1,8 @@
 import type { AstroIntegration } from "astro";
-import type { BuildMetaOptions } from "./core/types";
+
 import { unplugin } from "./";
 import { PLUGIN_NAME } from "./core/constants";
+import type { BuildMetaOptions } from "./core/types";
 
 /**
  * Astro integration

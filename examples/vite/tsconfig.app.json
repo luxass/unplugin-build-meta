@@ -10,9 +10,7 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "types": [
-      "unplugin-build-meta/types"
-    ],
+    "types": ["unplugin-build-meta/types"],
     "allowImportingTsExtensions": true,
 
     /* Linting */

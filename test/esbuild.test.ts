@@ -1,7 +1,9 @@
 import { join } from "node:path";
+
 import { build } from "esbuild";
 import { describe, expect, it } from "vitest";
 import { testdir } from "vitest-testdirs";
+
 import buildMeta from "../src/esbuild";
 
 describe("handles git metadata", () => {
