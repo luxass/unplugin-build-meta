@@ -6,13 +6,14 @@ on:
     # every sunday at 00:00
     - cron: "0 0 * * 0"
 
-# remove all permission
 permissions: {}
 
 jobs:
   test-build-tools:
-    runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
+      fail-fast: false
       matrix:
         tool:
           # rspack
@@ -37,39 +38,16 @@ jobs:
 
           # rolldown
           - { name: rolldown, version: latest }
-          - { name: rolldown, version: canary }
-          - { name: rolldown, version: nightly }
-          - { name: rolldown, version: 0.15.1 }
+          - { name: rolldown, version: 1.0.0 }
 
           # vite
           - { name: vite, version: latest }
+          - { name: vite, version: beta }
+          - { name: vite, version: 8.0.0 }
+          - { name: vite, version: 7.0.0 }
           - { name: vite, version: 6.0.2 }
-      fail-fast: false
 
-    steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
-        with:
-          persist-credentials: false
-
-      - name: setup pnpm
-        uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6.0.8
-
-      - name: setup node
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
-        with:
-          node-version: lts/*
-
-      - name: install
-        run: pnpm install --frozen-lockfile
-
-      - name: install build tool
-        run: pnpm add -Dw ${{ matrix.tool.name }}@${{ matrix.tool.version }}
-
-      - name: build
-        run: pnpm build
-
-      - name: test
-        run: pnpm test
-
-      - name: typecheck
-        run: pnpm typecheck
+    uses: luxass/shared-workflows/.github/workflows/reusable-test-build-tools.yaml@b55f08ac1aca5a4a3ae198bd8a7197c0157b3ef7 # v0.10.0
+    with:
+      tool-name: ${{ matrix.tool.name }}
+      tool-version: ${{ matrix.tool.version }}
