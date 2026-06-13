@@ -9,7 +9,7 @@
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@11.5.2",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -63,7 +63,10 @@
     "prepack": "pnpm run generate-types",
     "build": "tsdown",
     "dev": "tsdown --watch",
-    "lint": "eslint .",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
     "test": "vitest --run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit && pnpm -r typecheck",
@@ -117,13 +120,14 @@
     "unplugin": "catalog:prod"
   },
   "devDependencies": {
-    "@luxass/eslint-config": "catalog:dev",
     "@nuxt/kit": "catalog:dev",
     "@nuxt/schema": "catalog:dev",
     "@rspack/core": "catalog:dev",
     "@types/node": "catalog:dev",
     "esbuild": "catalog:dev",
-    "eslint": "catalog:dev",
+    "oxfmt": "catalog:dev",
+    "oxlint": "catalog:dev",
+    "oxlint-tsgolint": "catalog:dev",
     "publint": "catalog:dev",
     "rolldown": "catalog:dev",
     "rollup": "catalog:dev",
