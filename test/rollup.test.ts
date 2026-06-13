@@ -48,23 +48,14 @@ describe("handles git metadata", () => {
       plugins: [buildMeta()],
     });
 
-    const { output } = await bundle.generate({
-      format: "es",
-    });
+    const bundlePath = join(testdirPath, "dist", "bundle.js");
+    await bundle.write({ format: "es", file: bundlePath });
 
-    expect(output).toBeDefined();
-    expect(output[0]).toBeDefined();
-    expect(output[0].code).toBeDefined();
-
-    const code = output[0].code;
-
-    // check for constant declarations and their formats
-    expect(code).toMatch(/const\s+branch\s*=\s*["'][^"']+["']/);
-    expect(code).toMatch(/const\s+sha\s*=\s*["'][a-f0-9]{40}["']/);
-    expect(code).toMatch(/const\s+shortSha\s*=\s*["'][a-f0-9]{10}["']/);
-
-    // verify selected properties are exported
-    expect(code).toContain("export { branch, sha, shortSha }");
+    const gitSpecificMod = await import(bundlePath);
+    expect(Object.keys(gitSpecificMod)).toEqual(["branch", "sha", "shortSha"]);
+    expect(gitSpecificMod.branch).toBeTypeOf("string");
+    expect(gitSpecificMod.sha).toMatch(/^[a-f0-9]{40}$/);
+    expect(gitSpecificMod.shortSha).toMatch(/^[a-f0-9]{10}$/);
   });
 });
 
@@ -105,22 +96,13 @@ describe("handles runtime metadata", () => {
       plugins: [buildMeta()],
     });
 
-    const { output } = await bundle.generate({
-      format: "es",
-    });
+    const bundlePath = join(testdirPath, "dist", "bundle.js");
+    await bundle.write({ format: "es", file: bundlePath });
 
-    expect(output).toBeDefined();
-    expect(output[0]).toBeDefined();
-    expect(output[0].code).toBeDefined();
-
-    const code = output[0].code;
-
-    // check for specific runtime property exports
-    expect(code).toMatch(/const\s+platform\s*=\s*["'][^"']+["']/);
-    expect(code).toMatch(/const\s+arch\s*=\s*["'][^"']+["']/);
-    expect(code).toMatch(/const\s+versions\s*=\s*\{/);
-
-    // verify selected properties are exported
-    expect(code).toContain("export { arch, platform, versions }");
+    const runtimeSpecificMod = await import(bundlePath);
+    expect(Object.keys(runtimeSpecificMod)).toEqual(["arch", "platform", "versions"]);
+    expect(runtimeSpecificMod.arch).toBeTypeOf("string");
+    expect(runtimeSpecificMod.platform).toBeTypeOf("string");
+    expect(runtimeSpecificMod.versions).toBeTypeOf("object");
   });
 });

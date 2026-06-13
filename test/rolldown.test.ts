@@ -51,22 +51,13 @@ describe("handles git metadata", () => {
       plugins: [buildMeta()],
     });
 
-    const { output } = await bundle.generate({
-      format: "esm",
-    });
+    const bundlePath = join(testdirPath, "dist", "bundle.js");
+    await bundle.write({ format: "esm", file: bundlePath });
 
-    expect(output).toBeDefined();
-    expect(output[0]).toBeDefined();
-    expect(output[0].code).toBeDefined();
-
-    const code = output[0].code;
-
-    // check that the selected properties were inlined or emitted into the bundle
-    expect(code).toMatch(/branch\s*[:=]\s*["'][^"']+["']/);
-    expect(code).toMatch(/sha\s*[:=]\s*["'][a-f0-9]{40}["']/);
-    expect(code).toMatch(/shortSha\s*[:=]\s*["'][a-f0-9]{10}["']/);
-
-    // verify selected properties are exported
-    expect(code).toContain("export { branch, sha, shortSha }");
+    const gitSpecificMod = await import(bundlePath);
+    expect(Object.keys(gitSpecificMod)).toEqual(["branch", "sha", "shortSha"]);
+    expect(gitSpecificMod.branch).toBeTypeOf("string");
+    expect(gitSpecificMod.sha).toMatch(/^[a-f0-9]{40}$/);
+    expect(gitSpecificMod.shortSha).toMatch(/^[a-f0-9]{10}$/);
   });
 });
