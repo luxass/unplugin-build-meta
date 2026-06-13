@@ -9,18 +9,18 @@ packages:
 
 catalogs:
   dev:
-    "@nuxt/kit": 4.4.7
-    "@nuxt/schema": 4.4.7
-    "@rspack/core": 2.0.6
-    "@types/node": 25.9.2
+    "@nuxt/kit": 4.4.8
+    "@nuxt/schema": 4.4.8
+    "@rspack/core": 2.0.8
+    "@types/node": 25.9.3
     "@types/react": 19.2.17
     "@types/react-dom": 19.2.3
     esbuild: 0.28.0
-    oxfmt: 0.53.0
+    oxfmt: 0.54.0
     oxlint: 1.68.0
     oxlint-tsgolint: 0.23.0
     publint: 0.3.21
-    rolldown: 1.1.0
+    rolldown: 1.1.1
     rollup: 4.61.1
     tsdown: 0.22.2
     typescript: 6.0.3
@@ -30,7 +30,7 @@ catalogs:
     webpack: 5.107.2
 
   example:
-    "@rspack/cli": 2.0.6
+    "@rspack/cli": 2.0.8
     "@rspack/plugin-react-refresh": 2.0.2
     "@vitejs/plugin-react": 6.0.2
     react: 19.2.7
