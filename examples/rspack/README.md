@@ -1,23 +1,18 @@
-# Rspack project
+# Rspack + Build Meta
 
-## Setup
-
-Install the dependencies:
-
-```bash
-npm install
-```
+Plain HTML/CSS example for `unplugin-build-meta` with Rspack.
 
 ## Get started
 
-Start the dev server:
-
 ```bash
-npm run dev
+pnpm install
+pnpm --filter @unplugin-build-meta/rspack dev
 ```
 
-Build the app for production:
+## Build
 
 ```bash
-npm run build
+pnpm --filter @unplugin-build-meta/rspack build
 ```
+
+The page is mounted from `src/main.ts`, imports `virtual:build-meta/git`, and renders the metadata into `#root` without a UI framework.

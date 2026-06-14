@@ -13,8 +13,6 @@ catalogs:
     "@nuxt/schema": 4.4.7
     "@rspack/core": 2.0.6
     "@types/node": 25.9.2
-    "@types/react": 19.2.17
-    "@types/react-dom": 19.2.3
     esbuild: 0.28.0
     oxfmt: 0.53.0
     oxlint: 1.68.0
@@ -31,12 +29,6 @@ catalogs:
 
   example:
     "@rspack/cli": 2.0.6
-    "@rspack/plugin-react-refresh": 2.0.2
-    "@vitejs/plugin-react": 6.0.2
-    react: 19.2.7
-    react-dom: 19.2.7
-    react-refresh: 0.18.0
-    ts-node: 10.9.2
 
   prod:
     git-url-parse: 16.1.0
