@@ -12,6 +12,7 @@
   "devDependencies": {
     "@rspack/cli": "catalog:example",
     "@rspack/core": "catalog:dev",
+    "@rspack/dev-server": "catalog:example",
     "typescript": "catalog:dev",
     "unplugin-build-meta": "workspace:*"
   }

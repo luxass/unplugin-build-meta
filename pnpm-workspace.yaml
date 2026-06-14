@@ -29,6 +29,7 @@ catalogs:
 
   example:
     "@rspack/cli": 2.0.6
+    "@rspack/dev-server": 2.0.3
 
   prod:
     git-url-parse: 16.1.0

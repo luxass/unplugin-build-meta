@@ -61,6 +61,9 @@ catalogs:
     '@rspack/cli':
       specifier: 2.0.6
       version: 2.0.6
+    '@rspack/dev-server':
+      specifier: 2.0.3
+      version: 2.0.3
   prod:
     git-url-parse:
       specifier: 16.1.0
@@ -145,10 +148,13 @@ importers:
     devDependencies:
       '@rspack/cli':
         specifier: catalog:example
-        version: 2.0.6(@rspack/core@2.0.6)
+        version: 2.0.6(@rspack/core@2.0.6)(@rspack/dev-server@2.0.3(@rspack/core@2.0.6))
       '@rspack/core':
         specifier: catalog:dev
         version: 2.0.6
+      '@rspack/dev-server':
+        specifier: catalog:example
+        version: 2.0.3(@rspack/core@2.0.6)
       typescript:
         specifier: catalog:dev
         version: 6.0.3
@@ -1459,6 +1465,25 @@ packages:
       '@module-federation/runtime-tools':
         optional: true
       '@swc/helpers':
+        optional: true
+
+  '@rspack/dev-middleware@2.0.3':
+    resolution: {integrity: sha512-GxnGj9jy76G3eCPyZei81fwKLAMLZaPEEqFz1/QDYquhwi/qYZX5fekFJ1XVpuwxGEK9KSX3hxZylfwrs4cmLA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    peerDependencies:
+      '@rspack/core': ^2.0.0
+    peerDependenciesMeta:
+      '@rspack/core':
+        optional: true
+
+  '@rspack/dev-server@2.0.3':
+    resolution: {integrity: sha512-S29nOxXQS9o+0uGNe7SgND2dAKnte5ZTD5tiT3/B4lKbviqpXD4tbH7NZWA3hGwlSkmOIbFlysYPL1bVHuBcSg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    peerDependencies:
+      '@rspack/core': ^2.0.0-0
+      selfsigned: ^5.0.0
+    peerDependenciesMeta:
+      selfsigned:
         optional: true
 
   '@shikijs/core@4.2.0':
@@ -4004,13 +4029,24 @@ snapshots:
       '@rspack/binding-win32-ia32-msvc': 2.0.6
       '@rspack/binding-win32-x64-msvc': 2.0.6
 
-  '@rspack/cli@2.0.6(@rspack/core@2.0.6)':
+  '@rspack/cli@2.0.6(@rspack/core@2.0.6)(@rspack/dev-server@2.0.3(@rspack/core@2.0.6))':
     dependencies:
       '@rspack/core': 2.0.6
+    optionalDependencies:
+      '@rspack/dev-server': 2.0.3(@rspack/core@2.0.6)
 
   '@rspack/core@2.0.6':
     dependencies:
       '@rspack/binding': 2.0.6
+
+  '@rspack/dev-middleware@2.0.3(@rspack/core@2.0.6)':
+    optionalDependencies:
+      '@rspack/core': 2.0.6
+
+  '@rspack/dev-server@2.0.3(@rspack/core@2.0.6)':
+    dependencies:
+      '@rspack/core': 2.0.6
+      '@rspack/dev-middleware': 2.0.3(@rspack/core@2.0.6)
 
   '@shikijs/core@4.2.0':
     dependencies:
