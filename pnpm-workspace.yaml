@@ -13,7 +13,7 @@ catalogs:
     "@nuxt/schema": 4.4.7
     "@rspack/core": 2.0.6
     "@types/node": 25.9.2
-    esbuild: 0.28.0
+    esbuild: 0.28.1
     oxfmt: 0.53.0
     oxlint: 1.68.0
     oxlint-tsgolint: 0.23.0
@@ -38,3 +38,6 @@ catalogs:
 
 onlyBuiltDependencies:
   - esbuild
+minimumReleaseAgeExclude:
+  # Renovate security update: esbuild@0.28.1
+  - esbuild@0.28.1
