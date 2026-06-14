@@ -2,24 +2,17 @@
   "name": "@unplugin-build-meta/rspack",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "rspack dev",
     "build": "rspack build",
     "preview": "rspack preview",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
-    "react": "catalog:example",
-    "react-dom": "catalog:example"
-  },
   "devDependencies": {
     "@rspack/cli": "catalog:example",
     "@rspack/core": "catalog:dev",
-    "@rspack/plugin-react-refresh": "catalog:example",
-    "@types/react": "catalog:dev",
-    "@types/react-dom": "catalog:dev",
-    "react-refresh": "catalog:example",
-    "ts-node": "catalog:example",
+    "@rspack/dev-server": "catalog:example",
     "typescript": "catalog:dev",
     "unplugin-build-meta": "workspace:*"
   }

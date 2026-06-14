@@ -100,13 +100,13 @@
   "peerDependencies": {
     "@nuxt/kit": "^3.0.0 || ^4.0.0",
     "@nuxt/schema": "^3.0.0 || ^4.0.0",
-    "@rspack/core": "^1.5.0",
+    "@rspack/core": "^1.1.8 || ^2.0.0",
     "astro": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
-    "esbuild": "*",
+    "esbuild": ">=0.19.12 <1",
     "rolldown": "^1.0.0-rc.5",
-    "rollup": ">=4",
+    "rollup": ">=4 <5",
     "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
-    "webpack": "^4 || ^5"
+    "webpack": "^5.73.0"
   },
   "peerDependenciesMeta": {
     "@nuxt/kit": {

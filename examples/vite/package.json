@@ -9,14 +9,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
-    "react": "catalog:example",
-    "react-dom": "catalog:example"
-  },
   "devDependencies": {
-    "@types/react": "catalog:dev",
-    "@types/react-dom": "catalog:dev",
-    "@vitejs/plugin-react": "catalog:example",
     "typescript": "catalog:dev",
     "unplugin-build-meta": "workspace:*",
     "vite": "catalog:dev"
