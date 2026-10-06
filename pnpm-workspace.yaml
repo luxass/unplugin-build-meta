@@ -16,7 +16,7 @@ catalogs:
     esbuild: 0.28.0
     oxfmt: 0.53.0
     oxlint: 1.68.0
-    oxlint-tsgolint: 0.23.0
+    oxlint-tsgolint: 7.0.2003
     publint: 0.3.21
     rolldown: 1.1.0
     rollup: 4.61.1
