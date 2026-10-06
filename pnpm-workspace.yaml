@@ -33,7 +33,7 @@ catalogs:
 
   prod:
     git-url-parse: 16.1.0
-    simple-git: 3.36.0
+    simple-git: 4.0.1
     unplugin: 3.0.0
 
 onlyBuiltDependencies:
@@ -41,3 +41,5 @@ onlyBuiltDependencies:
 minimumReleaseAgeExclude:
   # Renovate security update: pnpm@11.8.0 || 11.11.0
   - pnpm@11.8.0 || 11.11.0
+  # Renovate security update: simple-git@4.0.1
+  - simple-git@4.0.1
