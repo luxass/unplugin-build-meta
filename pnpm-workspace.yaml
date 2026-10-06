@@ -23,7 +23,7 @@ catalogs:
     tsdown: 0.22.2
     typescript: 6.0.3
     vite: 8.0.16
-    vitest: 4.1.8
+    vitest: 4.1.11
     vitest-testdirs: 4.4.3
     webpack: 5.107.2
 
@@ -41,3 +41,5 @@ onlyBuiltDependencies:
 minimumReleaseAgeExclude:
   # Renovate security update: pnpm@11.8.0 || 11.11.0
   - pnpm@11.8.0 || 11.11.0
+  # Renovate security update: vitest@4.1.11
+  - vitest@4.1.11
