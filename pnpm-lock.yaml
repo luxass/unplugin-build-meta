@@ -62,8 +62,8 @@ catalogs:
       specifier: 2.3.1
       version: 2.3.1
     '@rspack/dev-server':
-      specifier: 2.0.3
-      version: 2.0.3
+      specifier: 2.2.2
+      version: 2.2.2
   prod:
     git-url-parse:
       specifier: 16.1.0
@@ -148,13 +148,13 @@ importers:
     devDependencies:
       '@rspack/cli':
         specifier: catalog:example
-        version: 2.3.1(@rspack/core@2.3.1)(@rspack/dev-server@2.0.3(@rspack/core@2.3.1))
+        version: 2.3.1(@rspack/core@2.3.1)(@rspack/dev-server@2.2.2(@rspack/core@2.3.1))
       '@rspack/core':
         specifier: catalog:dev
         version: 2.3.1
       '@rspack/dev-server':
         specifier: catalog:example
-        version: 2.0.3(@rspack/core@2.3.1)
+        version: 2.2.2(@rspack/core@2.3.1)
       typescript:
         specifier: catalog:dev
         version: 6.0.3
@@ -1522,8 +1522,8 @@ packages:
       '@swc/helpers':
         optional: true
 
-  '@rspack/dev-middleware@2.0.3':
-    resolution: {integrity: sha512-GxnGj9jy76G3eCPyZei81fwKLAMLZaPEEqFz1/QDYquhwi/qYZX5fekFJ1XVpuwxGEK9KSX3hxZylfwrs4cmLA==}
+  '@rspack/dev-middleware@2.0.6':
+    resolution: {integrity: sha512-Rcx7dlDZQ9ddUJGuutFvnSeAKl+ZOc1fnC3htibs8yew3zMD9VgvSUe4MAwEn94Gb390l5heA+s/j5KhoSG5MQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       '@rspack/core': ^2.0.0
@@ -1531,11 +1531,11 @@ packages:
       '@rspack/core':
         optional: true
 
-  '@rspack/dev-server@2.0.3':
-    resolution: {integrity: sha512-S29nOxXQS9o+0uGNe7SgND2dAKnte5ZTD5tiT3/B4lKbviqpXD4tbH7NZWA3hGwlSkmOIbFlysYPL1bVHuBcSg==}
+  '@rspack/dev-server@2.2.2':
+    resolution: {integrity: sha512-pK4V9YJW8dkfjy6WYJ2T6DrPkcIn2yjA1HiaU146141j8UCxHok5lsplyqudLzerOhvwqMrNFmnsuXLnFbfn4Q==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
-      '@rspack/core': ^2.0.0-0
+      '@rspack/core': ^2.0.0
       selfsigned: ^5.0.0
     peerDependenciesMeta:
       selfsigned:
@@ -4152,24 +4152,24 @@ snapshots:
       '@rspack/binding-win32-ia32-msvc': 2.3.1
       '@rspack/binding-win32-x64-msvc': 2.3.1
 
-  '@rspack/cli@2.3.1(@rspack/core@2.3.1)(@rspack/dev-server@2.0.3(@rspack/core@2.3.1))':
+  '@rspack/cli@2.3.1(@rspack/core@2.3.1)(@rspack/dev-server@2.2.2(@rspack/core@2.3.1))':
     dependencies:
       '@rspack/core': 2.3.1
     optionalDependencies:
-      '@rspack/dev-server': 2.0.3(@rspack/core@2.3.1)
+      '@rspack/dev-server': 2.2.2(@rspack/core@2.3.1)
 
   '@rspack/core@2.3.1':
     dependencies:
       '@rspack/binding': 2.3.1
 
-  '@rspack/dev-middleware@2.0.3(@rspack/core@2.3.1)':
+  '@rspack/dev-middleware@2.0.6(@rspack/core@2.3.1)':
     optionalDependencies:
       '@rspack/core': 2.3.1
 
-  '@rspack/dev-server@2.0.3(@rspack/core@2.3.1)':
+  '@rspack/dev-server@2.2.2(@rspack/core@2.3.1)':
     dependencies:
       '@rspack/core': 2.3.1
-      '@rspack/dev-middleware': 2.0.3(@rspack/core@2.3.1)
+      '@rspack/dev-middleware': 2.0.6(@rspack/core@2.3.1)
 
   '@shikijs/core@4.2.0':
     dependencies:
