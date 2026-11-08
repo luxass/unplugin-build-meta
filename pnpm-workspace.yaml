@@ -11,7 +11,7 @@ catalogs:
   dev:
     "@nuxt/kit": 4.4.7
     "@nuxt/schema": 4.4.7
-    "@rspack/core": 2.0.6
+    "@rspack/core": 2.3.1
     "@types/node": 25.9.2
     esbuild: 0.28.2
     oxfmt: 0.53.0
@@ -28,7 +28,7 @@ catalogs:
     webpack: 5.112.2
 
   example:
-    "@rspack/cli": 2.0.6
+    "@rspack/cli": 2.3.1
     "@rspack/dev-server": 2.0.3
 
   prod:
