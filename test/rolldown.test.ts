@@ -28,7 +28,7 @@ describe("handles git metadata", () => {
     const code = output[0].code;
 
     // check for git region marker
-    expect(code).toContain("//#region \\0virtual:build-meta/git");
+    expect(code).toMatch(/\/\/(?:#region)? \\0virtual:build-meta\/git/);
 
     // check for git metadata exports and formats
     expect(code).toMatch(/const\s+repositoryUrl\s*=\s*["']https:\/\/[^"']+["']/);

@@ -9,32 +9,32 @@ packages:
 
 catalogs:
   dev:
-    "@nuxt/kit": 4.4.7
-    "@nuxt/schema": 4.4.7
-    "@rspack/core": 2.0.6
-    "@types/node": 25.9.2
-    esbuild: 0.28.0
-    oxfmt: 0.53.0
-    oxlint: 1.68.0
-    oxlint-tsgolint: 0.23.0
-    publint: 0.3.21
-    rolldown: 1.1.0
-    rollup: 4.61.1
-    tsdown: 0.22.2
-    typescript: 6.0.3
-    vite: 8.0.16
-    vitest: 4.1.8
-    vitest-testdirs: 4.4.3
-    webpack: 5.107.2
+    "@nuxt/kit": 4.6.4
+    "@nuxt/schema": 4.6.4
+    "@rspack/core": 2.3.1
+    "@types/node": 26.6.6
+    esbuild: 0.28.2
+    oxfmt: 0.76.0
+    oxlint: 1.91.0
+    oxlint-tsgolint: 7.0.2005
+    publint: 0.3.25
+    rolldown: 1.2.16
+    rollup: 4.67.4
+    tsdown: 0.23.5
+    typescript: 7.0.2
+    vite: 8.3.5
+    vitest: 5.1.0
+    vitest-testdirs: 4.5.2
+    webpack: 5.112.2
 
   example:
-    "@rspack/cli": 2.0.6
-    "@rspack/dev-server": 2.0.3
+    "@rspack/cli": 2.3.1
+    "@rspack/dev-server": 2.2.2
 
   prod:
     git-url-parse: 16.1.0
-    simple-git: 3.36.0
-    unplugin: 3.0.0
+    simple-git: 4.0.2
+    unplugin: 3.7.0
 
 onlyBuiltDependencies:
   - esbuild
