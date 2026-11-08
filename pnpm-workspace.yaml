@@ -25,7 +25,7 @@ catalogs:
     vite: 8.3.5
     vitest: 5.1.0
     vitest-testdirs: 4.4.3
-    webpack: 5.107.2
+    webpack: 5.112.2
 
   example:
     "@rspack/cli": 2.0.6
