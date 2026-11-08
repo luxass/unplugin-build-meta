@@ -18,7 +18,7 @@ catalogs:
     oxlint: 1.91.0
     oxlint-tsgolint: 7.0.2005
     publint: 0.3.25
-    rolldown: 1.1.0
+    rolldown: 1.2.16
     rollup: 4.67.4
     tsdown: 0.22.2
     typescript: 6.0.3
