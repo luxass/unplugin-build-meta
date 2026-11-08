@@ -29,11 +29,7 @@ npm install -D unplugin-build-meta
 import buildMeta from "unplugin-build-meta/vite";
 
 export default defineConfig({
-  plugins: [
-    buildMeta({
-      /* options */
-    }),
-  ],
+  plugins: [buildMeta({/* options */})],
 });
 ```
 
@@ -47,11 +43,7 @@ export default defineConfig({
 import buildMeta from "unplugin-build-meta/rollup";
 
 export default {
-  plugins: [
-    buildMeta({
-      /* options */
-    }),
-  ],
+  plugins: [buildMeta({/* options */})],
 };
 ```
 
@@ -64,11 +56,7 @@ export default {
 // webpack.config.js
 module.exports = {
   /* ... */
-  plugins: [
-    require("unplugin-build-meta/webpack").default({
-      /* options */
-    }),
-  ],
+  plugins: [require("unplugin-build-meta/webpack").default({/* options */})],
 };
 ```
 
@@ -80,14 +68,7 @@ module.exports = {
 ```ts
 // nuxt.config.js
 export default defineNuxtConfig({
-  modules: [
-    [
-      "unplugin-build-meta/nuxt",
-      {
-        /* options */
-      },
-    ],
-  ],
+  modules: [["unplugin-build-meta/nuxt", {/* options */}]],
 });
 ```
 
@@ -103,11 +84,7 @@ import buildMeta from "unplugin-build-meta/astro";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    buildMeta({
-      /* options */
-    }),
-  ],
+  integrations: [buildMeta({/* options */})],
 });
 ```
 
@@ -123,11 +100,7 @@ import buildMeta from "unplugin-build-meta/esbuild";
 
 build({
   /* ... */
-  plugins: [
-    buildMeta({
-      /* options */
-    }),
-  ],
+  plugins: [buildMeta({/* options */})],
 });
 ```
 
@@ -164,11 +137,7 @@ import buildMeta from "unplugin-build-meta/rolldown";
 
 export default defineConfig({
   input: "./index.js",
-  plugins: [
-    buildMeta({
-      /* options */
-    }),
-  ],
+  plugins: [buildMeta({/* options */})],
 });
 ```
 
@@ -205,7 +174,6 @@ Import it in your code:
 ```ts
 // Import all git metadata
 import * as git from "virtual:build-meta/git";
-
 // Or import specific values
 import { branch, sha, shortSha } from "virtual:build-meta/git";
 ```
@@ -238,7 +206,6 @@ Import it in your code:
 ```ts
 // Import all runtime information
 import * as runtime from "virtual:build-meta/runtime";
-
 // Or import specific values
 import { arch, platform, versions } from "virtual:build-meta/runtime";
 ```
