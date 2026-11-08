@@ -52,8 +52,8 @@ catalogs:
       specifier: 5.1.0
       version: 5.1.0
     vitest-testdirs:
-      specifier: 4.4.3
-      version: 4.4.3
+      specifier: 4.5.2
+      version: 4.5.2
     webpack:
       specifier: 5.112.2
       version: 5.112.2
@@ -139,7 +139,7 @@ importers:
         version: 5.1.0(@types/node@25.9.2)(vite@8.3.5(@types/node@25.9.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2))
       vitest-testdirs:
         specifier: catalog:dev
-        version: 4.4.3(vitest@5.1.0(@types/node@25.9.2)(vite@8.3.5(@types/node@25.9.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)))
+        version: 4.5.2(vitest@5.1.0(@types/node@25.9.2)(vite@8.3.5(@types/node@25.9.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)))
       webpack:
         specifier: catalog:dev
         version: 5.112.2(esbuild@0.28.2)(lightningcss@1.33.0)
@@ -2861,9 +2861,9 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  testdirs@4.0.2:
-    resolution: {integrity: sha512-MzZDgbUt4yPmi/rwEZXUZZ912y/pmVqtE+G9YAOy6bfZ/7QdL0AjumpdsLUf3HH33I2jIINk5caxWSueRHok2Q==}
-    engines: {node: '>=22'}
+  testdirs@4.1.2:
+    resolution: {integrity: sha512-HoSZaDSoWhFip04JlTlUhghgD4r2pnfyDLky0xn9gXM/mj8g1Uf8rmbchIlTfh15zp93FAZLkcs2usjvRR/m9Q==}
+    engines: {node: '>=24'}
 
   tiny-inflate@1.0.3:
     resolution: {integrity: sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw==}
@@ -3217,11 +3217,11 @@ packages:
       vite:
         optional: true
 
-  vitest-testdirs@4.4.3:
-    resolution: {integrity: sha512-YKMbVia1NR0cWz1EVwMwfRBR294rrLcwkHB4rspbd5TG3o7Ay6GT904MW7+q0mntdAoP+KTU47X0iIuL9Wnz3A==}
-    engines: {node: '>=22'}
+  vitest-testdirs@4.5.2:
+    resolution: {integrity: sha512-EgxrxfG4E+PQN2vBk8HOG4u3HBL34P4MFRTJCEs4GR3BdGJlx8XADbU4lQL/zxU0wm5q6a0rq4+vQckL1lyVaQ==}
+    engines: {node: '>=24'}
     peerDependencies:
-      vitest: '>=3.0.0 <4.0.0 || >=4.0.0 <5.0.0'
+      vitest: '>=3.0.0 <4.0.0 || >=4.0.0 <5.0.0 || >=5.0.0 <6.0.0'
 
   vitest@5.1.0:
     resolution: {integrity: sha512-MzmNFnrwa8v8lF1bLxw3UJ4EREwVOVb75VqJZmUDRjJ6EluK/x9th7qTbaeDk41WxE1GxWqmTXcdsfobfH5sOA==}
@@ -3310,6 +3310,9 @@ packages:
 
   zod@4.4.3:
     resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
+
+  zod@4.6.5:
+    resolution: {integrity: sha512-v5l/aFXZQeai4awLbOpSoHecE9UiMrnfx75tEXLjNonXVARxQ5mOeipTjROUchszUNCqnE+hqAMujRsRHsut2Q==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -5901,9 +5904,9 @@ snapshots:
       commander: 2.20.3
       source-map-support: 0.5.21
 
-  testdirs@4.0.2:
+  testdirs@4.1.2:
     dependencies:
-      zod: 4.4.3
+      zod: 4.6.5
 
   tiny-inflate@1.0.3: {}
 
@@ -6117,11 +6120,11 @@ snapshots:
     optionalDependencies:
       vite: 7.3.5(@types/node@25.9.2)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)
 
-  vitest-testdirs@4.4.3(vitest@5.1.0(@types/node@25.9.2)(vite@8.3.5(@types/node@25.9.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2))):
+  vitest-testdirs@4.5.2(vitest@5.1.0(@types/node@25.9.2)(vite@8.3.5(@types/node@25.9.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2))):
     dependencies:
-      testdirs: 4.0.2
+      testdirs: 4.1.2
       vitest: 5.1.0(@types/node@25.9.2)(vite@8.3.5(@types/node@25.9.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2))
-      zod: 4.4.3
+      zod: 4.6.5
 
   vitest@5.1.0(@types/node@25.9.2)(vite@8.3.5(@types/node@25.9.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)):
     dependencies:
@@ -6202,5 +6205,7 @@ snapshots:
   yocto-queue@1.2.2: {}
 
   zod@4.4.3: {}
+
+  zod@4.6.5: {}
 
   zwitch@2.0.4: {}
