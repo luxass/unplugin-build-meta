@@ -20,7 +20,7 @@ catalogs:
     publint: 0.3.25
     rolldown: 1.2.16
     rollup: 4.67.4
-    tsdown: 0.22.2
+    tsdown: 0.23.5
     typescript: 6.0.3
     vite: 8.3.5
     vitest: 5.1.0
